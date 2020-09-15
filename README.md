@@ -1,6 +1,6 @@
 # vested
 
-`RShiny` application implementing **v**irtual **e**xperiment**s** to **t**each **e**xperimental **d**esign
+`RShiny` application implementing **v**irtual **e**xperiment**s** for **t**eaching **e**xperimental **d**esign
 
 ## Articles
 

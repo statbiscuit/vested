@@ -1,0 +1,50 @@
+@import url("//fonts.googleapis.com/css?family=Audiowide|Cabin:400,700");
+h1 {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 5.1;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+h2 {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1.1;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+body {
+    background-color: black;
+}
+div.mid {
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.egg_btn{
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.tomato_btn{
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    margin-right: -80%;
+    transform: translate(-50%, -50%)
+}
+.pumpkin_btn{
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    margin-right: -20%;
+    transform: translate(-50%, -50%)
+}

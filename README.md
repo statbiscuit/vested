@@ -2,7 +2,9 @@
 
 `RShiny` application implementing **v**irtual **e**xperiment**s** for **t**eaching **e**xperimental **d**esign
 
-## Articles
+![](/www/img/vested.png)
+
+## Articles on which experiments are based
 
 [Darius, P., Portier, K., & Schrevens, E. (2007). Virtual Experiments and Their Use in Teaching Experimental Design. International Statistical Review / Revue Internationale De Statistique, 75(3), 281--294.](http://www.jstor.org/stable/41509871)
 

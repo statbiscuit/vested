@@ -1,4 +1,5 @@
 @import url("//fonts.googleapis.com/css?family=Audiowide|Cabin:400,700");
+/* text */
 h1 {
     font-family: 'Audiowide', cursive;
     font-weight: 500;
@@ -12,9 +13,26 @@ h2 {
     font-weight: 500;
     line-height: 1.1;
     color: white;
+    font-size: 20px;
+    text-align: center;
+}
+h3 {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1;
+    color: black;
     font-size: 15px;
     text-align: center;
 }
+h4 {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1;
+    color: black;
+    font-size: 10px;
+    text-align: center;
+}
+/* layout of page */
 body {
     background-color: black;
 }
@@ -24,20 +42,21 @@ div.mid {
     align-items: center;
     justify-content: center
 }
-.egg_btn{
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
+/* buttons for each game */
 .tomato_btn{
     color: black;
     position: absolute;
     top: 50%;
     left: 20%;
     margin-right: -80%;
+    transform: translate(-50%, -50%)
+}
+.egg_btn{
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
     transform: translate(-50%, -50%)
 }
 .pumpkin_btn{
@@ -47,4 +66,34 @@ div.mid {
     left: 80%;
     margin-right: -20%;
     transform: translate(-50%, -50%)
+}
+/* hover over buttons for stories */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: white;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.container:hover .overlay {
+  opacity: 1;
+}
+/* hidden pages */
+/* back buttons */
+.btn-primary {
+    background-color: white;
+    color: black;
+}
+.btn-primary:hover {
+  background-color: grey; /* Green */
+  color: white;
 }

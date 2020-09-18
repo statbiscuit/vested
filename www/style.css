@@ -94,6 +94,20 @@ div.mid {
     color: black;
 }
 .btn-primary:hover {
-  background-color: grey; /* Green */
+  background-color: grey; 
   color: white;
+}
+/* info */
+.btn-info {
+    background-color: black !important;
+    border: 2px solid white !important;
+}
+.btn-info:hover {
+    opacity: 0.6;
+}
+
+.info {
+    position:absolute;
+    top: 10%;
+    left: 2%;
 }

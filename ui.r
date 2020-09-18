@@ -4,6 +4,7 @@
 library(typed)
 library(shiny)
 library(shinyjs)
+library(shinyWidgets)
 fluidPage(
     ## set up shinyjs
     useShinyjs(),
@@ -50,6 +51,8 @@ fluidPage(
     shinyjs::hidden(div(id = "experiment_page_pump",
                div(id = "back_to_landing_pump", 
                    tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page")),
+                   div(class = "info",dropdownButton(h4(textOutput("txt")),
+                                                     status = 'info', icon = icon('info'))),
                    h1("Pumpkin experiment")
                    ))),
     )

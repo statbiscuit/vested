@@ -44,5 +44,9 @@ function(input, output,session) {
             shinyjs::removeClass(selector = "body", class = "landing_page")
         })
     })
+    output$txt <- renderText("Two
+ farmers, Esther and Gwenllian, grow pumpkins
+ in Pukekohe for the farmer's market. After several years,
+ Esther clearly gets higher yields than Gwenllian. But why?")
     session$onSessionEnded(stopApp)
     }

@@ -97,17 +97,43 @@ div.mid {
   background-color: grey; 
   color: white;
 }
-/* info */
+/* info/settings pumpkin */
 .btn-info {
     background-color: black !important;
     border: 2px solid white !important;
+    padding: 32px 32px;
 }
 .btn-info:hover {
     opacity: 0.6;
 }
 
 .info {
-    position:absolute;
+    position: absolute;
+    top: 10%;
+    left: 2%;
+}
+/* pumpkin plots */
+.pump_wrapper {
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px 250px 250px;
+    grid-template-rows: 225px;
+    grid-gap: 125px 2px;
+    justify-content: space-evenly;
+    border: 10px solid white;
+}
+.bg-wrap {
+    background: url(img/tiles.png);           
+}
+.box {
+    background: url(img/soil.png);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    height: 250px;
+}
+/* pumpkin button options to set up experiment */
+.options {
+    position: absolute;
     top: 10%;
     left: 2%;
 }

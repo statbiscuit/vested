@@ -50,110 +50,115 @@ function(input, output,session) {
  in Pukekohe for the farmer's market. After several years,
  Esther clearly gets higher yields than Gwenllian. But why? Three variables affect yield 1) variety,
 2) heat, and 3) light.")
+    output$butter <- renderUI({
+        kum <- c("A","B","C","D","E","F","G","H","I","J","K","L") %in% input$kumi
+        but <- c("A","B","C","D","E","F","G","H","I","J","K","L")[!kum]
+        checkboxGroupInput("up_but","", choices = but, inline = TRUE)
+    })
     output$A <- renderUI({
-        if(input$varietyA == 'kumi'){
+        if("A" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyA == 'butter'){
+            if("A" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$B <- renderUI({
-        if(input$varietyB == 'kumi'){
+        if("B" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyB == 'butter'){
+            if("B" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$C <- renderUI({
-        if(input$varietyC == 'kumi'){
+        if("C" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyC == 'butter'){
+            if("C" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$D <- renderUI({
-        if(input$varietyD == 'kumi'){
+        if("D" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyD == 'butter'){
+            if("D" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$E <- renderUI({
-        if(input$varietyE == 'kumi'){
+        if("E" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyE == 'butter'){
+            if("E" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$F <- renderUI({
-        if(input$varietyF == 'kumi'){
+        if("F" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyF == 'butter'){
+            if("F" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$G <- renderUI({
-        if(input$varietyG == 'kumi'){
+        if("G" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyG == 'butter'){
+            if("G" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$H <- renderUI({
-        if(input$varietyH == 'kumi'){
+        if("H" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyH == 'butter'){
+            if("H" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$I <- renderUI({
-        if(input$varietyI == 'kumi'){
+        if("I" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyI == 'butter'){
+            if("I" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$J <- renderUI({
-        if(input$varietyJ == 'kumi'){
+        if("J" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyJ == 'butter'){
+            if("J" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$K <- renderUI({
-        if(input$varietyK == 'kumi'){
+        if("K" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyK == 'butter'){
+            if("K" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }
     })
     output$L <- renderUI({
-        if(input$varietyL == 'kumi'){
+        if("L" %in% input$kumi){
             img(src = "img/kumi.png")
         }else{
-            if(input$varietyL == 'butter'){
+            if("L" %in% input$up_but){
                 img(src = "img/butter.png")
             }
         }

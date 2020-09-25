@@ -50,15 +50,10 @@ function(input, output,session) {
  in Pukekohe for the farmer's market. After several years,
  Esther clearly gets higher yields than Gwenllian. But why? Three variables affect yield 1) variety,
 2) heat, and 3) light.")
-    output$butter <- renderUI({
-        kum <- c("A","B","C","D","E","F","G","H","I","J","K","L") %in% input$kumi
-        but <- c("A","B","C","D","E","F","G","H","I","J","K","L")[!kum]
-        checkboxGroupInput("up_but","", choices = but, inline = TRUE)
-    })
     output$A <- renderUI({
         if("A" %in% input$kumi){
             img(src = "img/kumi.png")
-        }else{
+        }else{ img(src = "img/butter.png")
             if("A" %in% input$up_but){
                 img(src = "img/butter.png")
             }

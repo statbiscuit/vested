@@ -111,7 +111,26 @@ div.mid {
     position: absolute;
     top: 10%;
     left: 2%;
-    width: 50%;
+    width: 30%;
+}
+.shiny-radiomatrix{
+    padding: 15px;
+    width: 100%;
+    font-family: 'Audiowide', cursive;
+}
+.shiny-radiomatrix tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+/* heat and light chekbox text */
+#heat
+{
+    padding: 20px;
+    font-family: 'Audiowide', cursive;
+}
+#light
+{
+    padding: 20px;
+    font-family: 'Audiowide', cursive;
 }
 /* pumpkin plots */
 .pump_wrapper {

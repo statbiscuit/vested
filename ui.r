@@ -5,6 +5,7 @@ library(typed)
 library(shiny)
 library(shinyjs)
 library(shinyWidgets)
+library(shinyRadioMatrix)
 fluidPage(
     ## set up shinyjs
     useShinyjs(),
@@ -51,21 +52,23 @@ fluidPage(
     shinyjs::hidden(div(id = "experiment_page_pump",
                         div(id = "back_to_landing_pump", 
                             tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
-                        div(class = "info",dropdownButton(h3(icon("seedling"),tags$b("Kumi Kumi variety in plots...")),
-                                                          checkboxGroupInput("kumi","",
-                                                                             c("A","B","C","D","E","F",
-                                                                               "G","H","I","J","K","L"), inline = TRUE),
-                                                          h3(icon("seedling"),tags$b("Buttercup variety in plots...")),
-                                                          uiOutput("butter"),
-                                                          h3(icon("solar-panel"),tags$b("Which plots to heat")),
-                                                          checkboxGroupInput("heat","",
-                                                                             c("A","B","C","D","E","F",
-                                                                               "G","H","I","J","K","L"), inline = TRUE),
-                                                          h3(icon("sun"),tags$b("Which plots to light")),
-                                                          checkboxGroupInput("light","",
-                                                                             c("A","B","C","D","E","F",
-                                                                               "G","H","I","J","K","L"), inline  = TRUE),
-                                                          status = 'info', icon = icon('clipboard'), size = "lg")),
+                        div(class = "info",dropdownButton(fluidRow(
+                                               column(6,h3(icon("seedling"),
+                                                           tags$b("Variety")),
+                                                      radioMatrixInput(inputId = "rmi", rowIds = LETTERS[1:12],
+                                                                       minLabels =  LETTERS[1:12],
+                                                                       maxLabels = rep("",12),
+                                                                       choices = c("Kumi Kumi","Buttercup"),
+                                                                       selected = NULL)),
+                                               column(3, h3(icon("solar-panel"),tags$b("Heat")),
+                                                      checkboxGroupInput("heat","",
+                                                                         c("A","B","C","D","E","F",
+                                                                           "G","H","I","J","K","L"))),
+                                               column(3,h3(icon("sun"),tags$b("Light")),
+                                                      checkboxGroupInput("light","",
+                                                                         c("A","B","C","D","E","F",
+                                                                           "G","H","I","J","K","L")))),
+                                               status = 'info', icon = icon('clipboard'), size = "lg")),
                         h1("Country Pumpkin?"),
                         h2(textOutput("txt")),
                         br(),

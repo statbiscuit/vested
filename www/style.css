@@ -149,11 +149,5 @@ div.mid {
     color: #fff;
     border-radius: 5px;
     padding: 10px;
-    height: 250px;
-}
-/* pumpkin button options to set up experiment */
-.options {
-    position: absolute;
-    top: 10%;
-    left: 2%;
+    height: 275px;
 }

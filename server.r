@@ -50,113 +50,20 @@ function(input, output,session) {
  in Pukekohe for the farmer's market. After several years,
  Esther clearly gets higher yields than Gwenllian. But why? Three variables affect yield 1) variety,
 2) heat, and 3) light.")
-    output$A <- renderUI({
-        if("A" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{ img(src = "img/butter.png")
-            if("A" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$B <- renderUI({
-        if("B" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("B" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$C <- renderUI({
-        if("C" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("C" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$D <- renderUI({
-        if("D" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("D" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$E <- renderUI({
-        if("E" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("E" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$F <- renderUI({
-        if("F" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("F" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$G <- renderUI({
-        if("G" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("G" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$H <- renderUI({
-        if("H" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("H" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$I <- renderUI({
-        if("I" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("I" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$J <- renderUI({
-        if("J" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("J" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$K <- renderUI({
-        if("K" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("K" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
-    })
-    output$L <- renderUI({
-        if("L" %in% input$kumi){
-            img(src = "img/kumi.png")
-        }else{
-            if("L" %in% input$up_but){
-                img(src = "img/butter.png")
-            }
-        }
+    lapply(LETTERS[1:12], function(i) {
+        output[[i]] <- renderUI({
+            tagList(
+                if(i %in% input$heat) icon("solar-panel"),
+                if(i %in% input$light) icon("sun"),
+                validate(need(!is.null(input$variety[[i]]),"")),
+                if(input$variety[[i]] == "Kumi Kumi"){
+                    img(src = "img/kumi.png")
+                }else{
+                    if(input$variety[[i]] == "Buttercup"){
+                        img(src = "img/butter.png")
+                    }
+                })
+        })
     })
     session$onSessionEnded(stopApp)
 }

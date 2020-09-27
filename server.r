@@ -65,5 +65,23 @@ function(input, output,session) {
                 })
         })
     })
+    data <- reactive({
+        h <- l <- rep("none",12)
+        h[LETTERS[1:12] %in% input$heat] <- "yes"
+        l[LETTERS[1:12] %in% input$light] <- "yes"
+        data <- data.frame(variety = unlist(input$variety),
+                           heat = h,
+                           light = l,
+                           yield = rnorm(12))
+        data
+    })
+    output$download_pumpkin <- downloadHandler(
+        filename = function() {
+            paste('pumpkin_data-', Sys.Date(), '.csv', sep='')
+        },
+        content = function(con) {
+            write.csv(data(), con, row.names = LETTERS[1:12])
+        }
+    )
     session$onSessionEnded(stopApp)
 }

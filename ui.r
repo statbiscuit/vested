@@ -100,6 +100,10 @@ fluidPage(
                                     uiOutput("K")),
                                 div(class="box fs", h2("L"),
                                     uiOutput("L"))
-                                ))
+                                )),
+                        br(),
+                        br(),
+                        actionButton("run_pumpkin", h3("Run experiment")),
+                        downloadButton("download_pumpkin", h4("Download data"))
                         ))
 )

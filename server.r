@@ -48,11 +48,12 @@ function(input, output,session) {
     output$txt <- renderText("Two
  farmers, Esther and Gwenllian, grow pumpkins
  in Pukekohe for the farmer's market. After several years,
- Esther clearly gets higher yields than Gwenllian. But why? Three variables affect yield 1) variety,
-2) heat, and 3) light.")
+ Esther clearly gets higher yields than Gwenllian. But why? Three variables, which can be controlled by the farmers,
+ affect yield 1) variety, 2) heat, and 3) light. To ascertain what the ")
     lapply(LETTERS[1:12], function(i) {
         output[[i]] <- renderUI({
             tagList(
+                ## img(src = "img/sparkle.gif"),
                 if(i %in% input$heat) icon("solar-panel"),
                 if(i %in% input$light) icon("sun"),
                 validate(need(!is.null(input$variety[[i]]),"")),
@@ -66,13 +67,15 @@ function(input, output,session) {
         })
     })
     data <- reactive({
-        h <- l <- rep("none",12)
-        h[LETTERS[1:12] %in% input$heat] <- "yes"
-        l[LETTERS[1:12] %in% input$light] <- "yes"
+        h <- rep("Natural",12)
+        l <- rep("Ambient",12)
+        h[LETTERS[1:12] %in% input$heat] <- "Supplemented"
+        l[LETTERS[1:12] %in% input$light] <- "Controlled"
         data <- data.frame(variety = unlist(input$variety),
                            heat = h,
                            light = l,
-                           yield = rnorm(12))
+                           side = rep(c("North","South"), each = 6))
+        data$yield <- sim_pumpkin_yield(data)
         data
     })
     output$download_pumpkin <- downloadHandler(

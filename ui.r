@@ -1,11 +1,5 @@
 ## ui.R ##
 ## Virtual Experiments to Teach Experimental Design
-## remotes::install_github("JohnCoene/typed")
-library(typed)
-library(shiny)
-library(shinyjs)
-library(shinyWidgets)
-library(shinyRadioMatrix)
 fluidPage(
     ## set up shinyjs
     useShinyjs(),
@@ -53,18 +47,18 @@ fluidPage(
                         div(id = "back_to_landing_pump", 
                             tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
                         div(class = "info",dropdownButton(fluidRow(
-                                               column(8,h3(icon("seedling"),
+                                               column(6,h3(icon("seedling"),
                                                            tags$b("Variety")),
                                                       radioMatrixInput(inputId = "variety", rowIds = LETTERS[1:12],
                                                                        minLabels =  LETTERS[1:12],
                                                                        maxLabels = c(rep(c("N.","S."),each = 6)),
                                                                        choices = c("Kumi Kumi","Buttercup"),
                                                                        selected = NULL)),
-                                               column(2, h3(icon("solar-panel"),tags$b("Heat")),
+                                               column(3, h3(icon("solar-panel"),tags$b("Supplemented heat")),
                                                       checkboxGroupInput("heat","",
                                                                          c("A","B","C","D","E","F",
                                                                            "G","H","I","J","K","L"))),
-                                               column(2,h3(icon("sun"),tags$b("Light")),
+                                               column(3,h3(icon("sun"),tags$b("Controlled light")),
                                                       checkboxGroupInput("light","",
                                                                          c("A","B","C","D","E","F",
                                                                            "G","H","I","J","K","L")))),

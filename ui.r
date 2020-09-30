@@ -97,7 +97,6 @@ fluidPage(
                                 )),
                         br(),
                         br(),
-                        actionButton("run_pumpkin", h3("Run experiment")),
-                        downloadButton("download_pumpkin", h4("Download data"))
+                        downloadButton("download_pumpkin",  tagList(h3("Run experiment"), h4(" & download data")))
                         ))
 )

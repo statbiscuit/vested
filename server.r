@@ -78,15 +78,14 @@ function(input, output,session) {
         data$yield <- sim_pumpkin_yield(data)
         data
     })
-    output$tpe <- renderTyped(typed::typed(list(h2("randomisation"),h2("blocking"),h2("replication")),
-                                               typeSpeed = 100, loop = TRUE))
     output$download_pumpkin <- downloadHandler(
         filename = function() {
             paste('pumpkin_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
-            showModal(modalDialog(typedOutput("tpe"), footer = NULL))
-            Sys.sleep(10)
+            showModal(modalDialog(typed::typed(list(h4("What do you get when you drop a pumpkin? ...... Squash   ")),
+                                               typeSpeed = 50, loop = TRUE), footer = NULL))
+            Sys.sleep(5)
             removeModal()
             write.csv(data(), con, row.names = LETTERS[1:12])
             

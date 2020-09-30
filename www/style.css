@@ -135,8 +135,8 @@ div.mid {
 /* pumpkin plots */
 .pump_wrapper {
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px 250px 250px;
-    grid-template-rows: 225px;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-rows: 40%;
     grid-gap: 125px 2px;
     justify-content: space-evenly;
     border: 10px solid white;

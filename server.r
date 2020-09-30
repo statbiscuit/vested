@@ -78,12 +78,18 @@ function(input, output,session) {
         data$yield <- sim_pumpkin_yield(data)
         data
     })
+    output$tpe <- renderTyped(typed::typed(list(h2("randomisation"),h2("blocking"),h2("replication")),
+                                               typeSpeed = 100, loop = TRUE))
     output$download_pumpkin <- downloadHandler(
         filename = function() {
             paste('pumpkin_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
+            showModal(modalDialog(typedOutput("tpe"), footer = NULL))
+            Sys.sleep(10)
+            removeModal()
             write.csv(data(), con, row.names = LETTERS[1:12])
+            
         }
     )
     session$onSessionEnded(stopApp)

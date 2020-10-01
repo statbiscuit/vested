@@ -4,6 +4,10 @@
 
 ![](/www/img/vested.png)
 
+## The **Country Pumpkin** experiment
+
+![](/www/img/pump_experiment.png)
+
 ## Articles on which experiments are based
 
 [Darius, P., Portier, K., & Schrevens, E. (2007). Virtual Experiments and Their Use in Teaching Experimental Design. International Statistical Review / Revue Internationale De Statistique, 75(3), 281--294.](http://www.jstor.org/stable/41509871)

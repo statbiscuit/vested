@@ -32,6 +32,17 @@ h4 {
     font-size: 10px;
     text-align: center;
 }
+h4.foot {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+}
+a {
+    color: white;
+}
 /* layout of page */
 body {
     background-color: black;
@@ -97,7 +108,7 @@ div.mid {
   background-color: grey; 
   color: white;
 }
-/* info/settings pumpkin */
+/* info settings pumpkin */
 .btn-info {
     background-color: black !important;
     border: 2px solid white !important;
@@ -108,10 +119,10 @@ div.mid {
 }
 
 .info {
-    position: absolute;
-    top: 10%;
-    left: 2%;
-    width: 30%;
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 20%;
 }
 .shiny-radiomatrix{
     padding: 15px;
@@ -150,4 +161,11 @@ div.mid {
     border-radius: 5px;
     padding: 10px;
     height: 275px;
+}
+/* pumpkin grow gif */
+img.grow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

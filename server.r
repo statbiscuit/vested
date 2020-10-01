@@ -48,8 +48,21 @@ function(input, output,session) {
     output$txt <- renderText("Two
  farmers, Esther and Gwenllian, grow pumpkins
  in Pukekohe for the farmer's market. After several years,
- Esther clearly gets higher yields than Gwenllian. But why? Three variables, which can be controlled by the farmers,
- affect yield 1) variety, 2) heat, and 3) light. To ascertain what the ")
+ Esther clearly gets higher yields than Gwenllian. But why?
+ Several factors—variety, heat, and light—differ
+ in cultivation methods. Farmer Esther is conservative;
+ shee uses natural heating, ambient lighting, and a variety of
+ pumpkin called Kumi Kumi, whilst Gwenllian uses
+ supplementary heating, controlled lighting, and a variety
+ called Buttercup. Can you design a two-stage experiment and,
+ based on the results, decide which combination of the three factors of
+ heat, light, and variety gives the highest pummpkin yield?")
+    output$txt2 <- renderText("Due to funding cuts you only a small
+ greenhouse to carry out this experiment. The greenhouse has six north
+ facing plots (A–F) and six south facing (G–L). Your colleague tells you that from
+ previous experiments in the greenhouse there is known to be a
+ substantial difference in yields between the two sides
+ of the greenhouse.")
     lapply(LETTERS[1:12], function(i) {
         output[[i]] <- renderUI({
             tagList(
@@ -58,10 +71,10 @@ function(input, output,session) {
                 if(i %in% input$light) icon("sun"),
                 validate(need(!is.null(input$variety[[i]]),"")),
                 if(input$variety[[i]] == "Kumi Kumi"){
-                    img(src = "img/kumi.png")
+                    img(class = "grow",src = "img/kumi.png")
                 }else{
                     if(input$variety[[i]] == "Buttercup"){
-                        img(src = "img/butter.png")
+                        img(class = "grow",src = "img/butter.png")
                     }
                 })
         })
@@ -78,13 +91,24 @@ function(input, output,session) {
         data$yield <- sim_pumpkin_yield(data)
         data
     })
+    observe({
+        if(length(unlist(input$variety)) == 12){
+            shinyjs::show("download_pumpkin")
+        }
+    })
     output$download_pumpkin <- downloadHandler(
         filename = function() {
             paste('pumpkin_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
-            showModal(modalDialog(typed::typed(list(h4("What do you get when you drop a pumpkin? ...... Squash   ")),
-                                               typeSpeed = 50, loop = TRUE), footer = NULL))
+            showModal(modalDialog(tagList(typed::typed(sample(list(
+                                                     h3("What do you get when you drop a pumpkin? ...... Squash"),
+                                                     h3("What's a pumpkin's favorite genre? ...... Pulp fiction"),
+                                                     h3("Why did the pumpkin take a detour? ... To avoid the seeday part of time"),
+                                                     h3("How does a pumpkin listen to Halloween music? ...... On vine-yl"),
+                                                     h3("What did the queasy pumpkin say? ...... I don't feel so gourd")),1),
+                                                     typeSpeed = 50, loop = FALSE),
+                                          img(class = "grow",src = "img/growing.gif")),footer = NULL))
             Sys.sleep(5)
             removeModal()
             write.csv(data(), con, row.names = LETTERS[1:12])

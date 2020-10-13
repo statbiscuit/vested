@@ -169,3 +169,28 @@ img.grow {
   margin-right: auto;
   width: 50%;
 }
+/* chick (henhouse) plots */
+.bgchick-wrap {
+    background-color: lightgrey;
+    overflow: auto;
+}
+.chick_wrapper {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+    grid-gap: 1px 50px;
+    justify-content: space-evenly;
+    border: 10px solid black;
+}
+#innerchick-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 25%;
+  grid-gap: 3px;
+}
+#innerchick-grid > div {
+    background: url(img/straw.jpg);
+    border: 10px solid darkgrey;
+    padding: 1%;
+    height: 200px;
+}

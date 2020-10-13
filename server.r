@@ -44,6 +44,16 @@ function(input, output,session) {
             shinyjs::removeClass(selector = "body", class = "landing_page")
         })
     })
+    ## Chick output
+    output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
+to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize
+You need to determine the optimum amount of copper to add to their diets to improve growth rate.")
+     output$chicktxt1 <- renderText("You are told that 150 units of copper added to either
+diet seems to improve growth. It is also known that there is a level of copper beyond which
+ toxic effects will reduce growth rate. So what is the optimum amount to add?")
+    output$chicktxt2 <- renderText("At your disposal you have  32 cages that each contain 16 chicks.
+In addition to the amount of copper in their diet there are other factors that influence the growth rate of
+chicks (e.g., brooder position within the hen house).")
     ## Pumpkin outputs
     output$txt <- renderText("Two
  farmers, Esther and Gwenllian, grow pumpkins
@@ -66,7 +76,6 @@ function(input, output,session) {
     lapply(LETTERS[1:12], function(i) {
         output[[i]] <- renderUI({
             tagList(
-                ## img(src = "img/sparkle.gif"),
                 if(i %in% input$heat) icon("solar-panel"),
                 if(i %in% input$light) icon("sun"),
                 validate(need(!is.null(input$variety[[i]]),"")),

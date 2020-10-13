@@ -36,12 +36,41 @@ fluidPage(
                    tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
                    h1("Tomato experiment")
                    )),
-    ## Chicken
+    ## Chicks
     shinyjs::hidden(div(id = "experiment_page_chick",
-               div(id = "back_to_landing_chick", 
-                   tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
-               h1("Chicken experiment")
-               )),
+                        div(id = "back_to_landing_chick", 
+                            tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
+                        h1("Time for an eggsperiment?"),
+                        h2(textOutput("chicktxt")),
+                        h2(textOutput("chicktxt1")),
+                        h2(textOutput("chicktxt2")),
+                        div(class = "info",dropdownButton(label = h2("Setup"),
+                                                          status = 'info', icon = icon('clipboard'), circle = FALSE)),
+                        br(),
+                        br(),
+                        div(class = "bgchick-wrap",
+                            div(class="chick_wrapper",
+                                ## brooder 1
+                                div(id="innerchick-grid",
+                                    div(h2("1")),div(h2("2")),div(h2("3")),div(h2("4")),
+                                    div(h2("5")),div(h2("6")),div(h2("7")),div(h2("8"))),
+                                ## brooder 2
+                                div(id="innerchick-grid",
+                                    div(h2("9")),div(h2("10")),div(h2("11")),div(h2("12")),
+                                    div(h2("13")),div(h2("14")),div(h2("15")),div(h2("16"))),
+                                ## brooder 3
+                                div(id="innerchick-grid",
+                                    div(h2("17")),div(h2("18")),div(h2("19")),div(h2("20")),
+                                    div(h2("21")),div(h2("22")),div(h2("23")),div(h2("24"))),
+                                ## brooder 4
+                                div(id="innerchick-grid",
+                                    div(h2("25")),div(h2("26")),div(h2("27")),div(h2("28")),
+                                    div(h2("29")),div(h2("30")),div(h2("31")),div(h2("32"))))
+                            ),
+                        hr(),
+                        h4(class = "foot","Virtual experiment based on CHICK in"),
+                        h4(tags$a(href = "https://www.jstor.org/stable/2683224?seq=1#metadata_info_tab_contents", "Pollock, K., Ross-Parker, H., & Mead, R. (1979). A Sequence of Games Useful in Teaching Experimental Design to Agriculture Students."))
+                        )),
     ## Pumpkin
     shinyjs::hidden(div(id = "experiment_page_pump",
                         div(id = "back_to_landing_pump", 
@@ -101,7 +130,7 @@ fluidPage(
                             shinyjs::hidden(downloadButton("download_pumpkin",
                                                             tagList(h3("Let Pumpkins Grow"), h4(" & download data"))))),
                         hr(),
-                        h4(class = "foot","Virtual experiment based on"),
+                        h4(class = "foot","Virtual experiment based on TOMATO in"),
                         h4(tags$a(href = "https://www.jstor.org/stable/2683224?seq=1#metadata_info_tab_contents", "Pollock, K., Ross-Parker, H., & Mead, R. (1979). A Sequence of Games Useful in Teaching Experimental Design to Agriculture Students."))
                         ))
 )

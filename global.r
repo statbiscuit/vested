@@ -7,3 +7,4 @@ library(shinyRadioMatrix)
 
 
 source("scripts/pumpkin.r")
+source("scripts/chickens.r")

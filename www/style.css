@@ -125,9 +125,10 @@ div.mid {
     width: 20%;
 }
 .shiny-radiomatrix{
-    padding: 15px;
+    padding: 10px;
     width: 100%;
     font-family: 'Audiowide', cursive;
+    font-size: 12px; 
 }
 .shiny-radiomatrix tr:nth-child(even){
     background-color: #f2f2f2;
@@ -176,8 +177,8 @@ img.grow {
 }
 .chick_wrapper {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-rows: 100%;
+    grid-template-columns: 19% 2% 19% 2% 19% 2% 19%;
+    grid-template-rows: 5% 90%;
     grid-gap: 1px 50px;
     justify-content: space-evenly;
     border: 10px solid black;
@@ -193,4 +194,19 @@ img.grow {
     border: 10px solid darkgrey;
     padding: 1%;
     height: 200px;
+}
+#tiers {
+    display: grid;
+    grid-template-columns: 100;
+    grid-template-rows: 25%;
+}
+.boxed{
+    background-color: lightgrey;
+    width: 20%;
+}
+.info-chick {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 50%;
 }

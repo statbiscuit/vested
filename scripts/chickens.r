@@ -13,7 +13,7 @@ sim_chick_growth <- function(x){
     diet <- x$diet
     copper <- x$copper
     ## diet effect
-    res <- numeric(32)
+    res <- numeric(512)
     for (i in 1:length(res)){
         if(diet[i] == "Wheat"){
             res[i] = b0  + (2/5)*copper[i] - (1/1500)*copper[i]^2 + rnorm(1,30)
@@ -24,10 +24,10 @@ sim_chick_growth <- function(x){
     ## brooder effect
     ## brooders 4 "better" (av +50 g) brooder "worse" (av -40g)
     ## no difference brooder 1 and 3
-    brood <-  rnorm(32,rep(c(0,-40,0,50),each = 8))
+    brood <-  c(replicate(16,rnorm(32,rep(c(0,-40,0,50),each = 8))))
     ## tier effect (v. minimal)
     ## tiers 1 and 2 av +10g, tiers 3, 4 -5g 
-    tier <- rnorm(32,rep(rep(c(10,10 -5,-5), each = 2), times = 4))
+    tier <- c(replicate(16,rnorm(32,rep(rep(c(10,10 -5,-5), each = 2), times = 4))))
     res <- res + brood + tier
     return(res)
 }

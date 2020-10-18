@@ -44,7 +44,7 @@ fluidPage(
                         h2(textOutput("chicktxt")),
                         h2(textOutput("chicktxt1")),
                         h2(textOutput("chicktxt2")),
-                        div(class = "info-chick",dropdownButton(label = h2("Setup"),
+                        div(class = "info-chick",dropdownButton(label = h2("Setup experiment"),
                                                                 tagList(
                                                                     radioButtons("brood", h3(icon("egg"),"Brooder"),
                                                                                  1:4, inline = TRUE),
@@ -54,7 +54,7 @@ fluidPage(
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
                                                                                                 radioMatrixInput(inputId = "diet1",
-                                                                                                                 rowIds = 1:8,
+                                                                                                                 rowIds = paste(letters[1:8],1,sep = ""),
                                                                                                                  minLabels =  1:8,
                                                                                                                  maxLabels = rep("Brooder 1",8),
                                                                                                                  choices = c("Maize","Wheat"),
@@ -64,27 +64,27 @@ fluidPage(
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c1","Nest 1",0,700,1)),
+                                                                                                           numericInput("a1","Nest 1",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c2","Nest 2",0,700,1))
+                                                                                                           numericInput("b1","Nest 2",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c3","Nest 3",0,700,1)),
+                                                                                                           numericInput("c1","Nest 3",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c4","Nest 4",0,700,1))
+                                                                                                           numericInput("d1","Nest 4",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c5","Nest 5",0,700,1)),
+                                                                                                           numericInput("e1","Nest 5",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c6","Nest 6",0,700,1))
+                                                                                                           numericInput("f1","Nest 6",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c7","Nest 7",0,700,1)),
+                                                                                                           numericInput("g1","Nest 7",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c8","Nest 8",0,700,1))
+                                                                                                           numericInput("h1","Nest 8",0,700,1))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '2'",
                                                                                      fluidRow(
@@ -92,7 +92,7 @@ fluidPage(
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
                                                                                                 radioMatrixInput(inputId = "diet2",
-                                                                                                                 rowIds = 9:16,
+                                                                                                                 rowIds = paste(letters[1:8],2,sep = ""),
                                                                                                                  minLabels =  9:16,
                                                                                                                  maxLabels = rep("Brooder 2",8),
                                                                                                                  choices = c("Maize","Wheat"),
@@ -102,27 +102,27 @@ fluidPage(
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c9","Nest 9",0,700,1)),
+                                                                                                           numericInput("a2","Nest 9",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c10","Nest 10",0,700,1))
+                                                                                                           numericInput("b2","Nest 10",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c11","Nest 11",0,700,1)),
+                                                                                                           numericInput("c2","Nest 11",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c12","Nest 12",0,700,1))
+                                                                                                           numericInput("d2","Nest 12",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c13","Nest 13",0,700,1)),
+                                                                                                           numericInput("e2","Nest 13",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c14","Nest 14",0,700,1))
+                                                                                                           numericInput("f2","Nest 14",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c15","Nest 15",0,700,1)),
+                                                                                                           numericInput("g2","Nest 15",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c16","Nest 16",0,700,1))
+                                                                                                           numericInput("h2","Nest 16",0,700,1))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '3'",
                                                                                      fluidRow(
@@ -130,7 +130,7 @@ fluidPage(
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
                                                                                                 radioMatrixInput(inputId = "diet3",
-                                                                                                                 rowIds = 17:24,
+                                                                                                                 rowIds = paste(letters[1:8],3,sep = ""),
                                                                                                                  minLabels =  17:24,
                                                                                                                  maxLabels = rep("Brooder 3",8),
                                                                                                                  choices = c("Maize","Wheat"),
@@ -140,27 +140,27 @@ fluidPage(
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c17","Nest 17",0,700,1)),
+                                                                                                           numericInput("a3","Nest 17",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c18","Nest 18",0,700,1))
+                                                                                                           numericInput("b3","Nest 18",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c19","Nest 19",0,700,1)),
+                                                                                                           numericInput("c3","Nest 19",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c20","Nest 20",0,700,1))
+                                                                                                           numericInput("d3","Nest 20",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c21","Nest 21",0,700,1)),
+                                                                                                           numericInput("e3","Nest 21",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c22","Nest 22",0,700,1))
+                                                                                                           numericInput("f3","Nest 22",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c23","Nest 23",0,700,1)),
+                                                                                                           numericInput("g3","Nest 23",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c24","Nest 24",0,700,1))
+                                                                                                           numericInput("h3","Nest 24",0,700,1))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '4'",
                                                                                      fluidRow(
@@ -168,7 +168,7 @@ fluidPage(
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
                                                                                                 radioMatrixInput(inputId = "diet4",
-                                                                                                                 rowIds = 25:32,
+                                                                                                                 rowIds = paste(letters[1:8],4,sep = ""),
                                                                                                                  minLabels =  25:32,
                                                                                                                  maxLabels = rep("Brooder 4",8),
                                                                                                                  choices = c("Maize","Wheat"),
@@ -178,27 +178,27 @@ fluidPage(
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c25","Nest 25",0,700,1)),
+                                                                                                           numericInput("a4","Nest 25",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c26","Nest 26",0,700,1))
+                                                                                                           numericInput("b4","Nest 26",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c27","Nest 27",0,700,1)),
+                                                                                                           numericInput("c4","Nest 27",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c28","Nest 28",0,700,1))
+                                                                                                           numericInput("d4","Nest 28",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c29","Nest 29",0,700,1)),
+                                                                                                           numericInput("e4","Nest 29",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c30","Nest 30",0,700,1))
+                                                                                                           numericInput("f4","Nest 30",0,700,1))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c31","Nest 31",0,700,1)),
+                                                                                                           numericInput("g4","Nest 31",0,700,1)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c32","Nest 32",0,700,1))
+                                                                                                           numericInput("h4","Nest 32",0,700,1))
                                                                                                     ))))
                                                                 ), status = 'info', icon = icon('clipboard'), circle = FALSE)),
                         br(),
@@ -215,37 +215,37 @@ fluidPage(
                                 h3("Brooder 4"),
                                 ## brooder 1
                                 div(id="innerchick-grid",
-                                    div(h3(class = "boxed","1")),div(h3(class = "boxed","2")),
-                                    div(h3(class = "boxed","3")),div(h3(class = "boxed","4")),
-                                    div(h3(class = "boxed","5")),div(h3(class = "boxed","6")),
-                                    div(h3(class = "boxed","7")),div(h3(class = "boxed","8"))),
+                                    div(h3(class = "boxed","1"),uiOutput("a1")),div(h3(class = "boxed","2"),uiOutput("b1")),
+                                    div(h3(class = "boxed","3"),uiOutput("c1")),div(h3(class = "boxed","4"),uiOutput("d1")),
+                                    div(h3(class = "boxed","5"),uiOutput("e1")),div(h3(class = "boxed","6"),uiOutput("f1")),
+                                    div(h3(class = "boxed","7"),uiOutput("g1")),div(h3(class = "boxed","8"),uiOutput("h1"))),
                                 div(id = "tiers",
                                     div(br(), br(),br(),h4("Tier 1")), div(br(), br(),br(),h4("Tier 2")),
                                     div(br(), br(),br(),h4("Tier 3")), div(br(), br(),br(),h4("Tier 4"))),
                                 ## brooder 2
                                 div(id="innerchick-grid",
-                                    div(h3(class = "boxed","9")),div(h3(class = "boxed","10")),
-                                    div(h3(class = "boxed","11")),div(h3(class = "boxed","12")),
-                                    div(h3(class = "boxed","13")),div(h3(class = "boxed","14")),
-                                    div(h3(class = "boxed","15")),div(h3(class = "boxed","16"))),
+                                    div(h3(class = "boxed","9"),uiOutput("a2")),div(h3(class = "boxed","10"),uiOutput("b2")),
+                                    div(h3(class = "boxed","11"),uiOutput("c2")),div(h3(class = "boxed","12"),uiOutput("d2")),
+                                    div(h3(class = "boxed","13"),uiOutput("e2")),div(h3(class = "boxed","14"),uiOutput("f2")),
+                                    div(h3(class = "boxed","15"),uiOutput("g2")),div(h3(class = "boxed","16"),uiOutput("h2"))),
                                  div(id = "tiers",
                                     div(br(), br(),br(),h4("Tier 1")), div(br(), br(),br(),h4("Tier 2")),
                                     div(br(), br(),br(),h4("Tier 3")), div(br(), br(),br(),h4("Tier 4"))),
                                 ## brooder 3
                                 div(id="innerchick-grid",
-                                    div(h3(class = "boxed","17")),div(h3(class = "boxed","18")),
-                                    div(h3(class = "boxed","19")),div(h3(class = "boxed","20")),
-                                    div(h3(class = "boxed","21")),div(h3(class = "boxed","22")),
-                                    div(h3(class = "boxed","23")),div(h3(class = "boxed","24"))),
+                                    div(h3(class = "boxed","17"),uiOutput("a3")),div(h3(class = "boxed","18"),uiOutput("b3")),
+                                    div(h3(class = "boxed","19"),uiOutput("c3")),div(h3(class = "boxed","20"),uiOutput("d3")),
+                                    div(h3(class = "boxed","21"),uiOutput("e3")),div(h3(class = "boxed","22"),uiOutput("f3")),
+                                    div(h3(class = "boxed","23"),uiOutput("g3")),div(h3(class = "boxed","24"),uiOutput("h3"))),
                                  div(id = "tiers",
                                     div(br(), br(),br(),h4("Tier 1")), div(br(), br(),br(),h4("Tier 2")),
                                     div(br(), br(),br(),h4("Tier 3")), div(br(), br(),br(),h4("Tier 4"))),
                                 ## brooder 4
                                 div(id ="innerchick-grid",
-                                    div(h3(class = "boxed","25")),div(h3(class = "boxed","26")),
-                                    div(h3(class = "boxed","27")),div(h3(class = "boxed","28")),
-                                    div(h3(class = "boxed","29")),div(h3(class = "boxed","30")),
-                                    div(h3(class = "boxed","31")),div(h3(class = "boxed","32"))))
+                                    div(h3(class = "boxed","25"),uiOutput("a4")),div(h3(class = "boxed","26"),uiOutput("b4")),
+                                    div(h3(class = "boxed","27"),uiOutput("c4")),div(h3(class = "boxed","28"),uiOutput("d4")),
+                                    div(h3(class = "boxed","29"),uiOutput("e4")),div(h3(class = "boxed","30"),uiOutput("f4")),
+                                    div(h3(class = "boxed","31"),uiOutput("g4")),div(h3(class = "boxed","32"),uiOutput("h4"))))
                             ),
                         br(),
                         br(),
@@ -263,7 +263,7 @@ fluidPage(
                         h1("Country Pumpkin?"),
                         h2(textOutput("txt")),
                         h2(textOutput("txt2")),
-                        div(class = "info",dropdownButton(label = h2("Setup"),
+                        div(class = "info",dropdownButton(label = h2("Setup experiment"),
                                                tagList(h3(icon("seedling"),
                                                           tags$b("Variety")),
                                                        radioMatrixInput(inputId = "variety", rowIds = LETTERS[1:12],

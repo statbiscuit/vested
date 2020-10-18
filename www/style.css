@@ -204,6 +204,15 @@ img.grow {
     background-color: lightgrey;
     width: 20%;
 }
+.boxed_emo{
+    background-color: white;
+    width: 40%;
+    border: 1px solid black;
+    display: block;
+    margin-left: 30%;
+    margin-right: 70%;
+    border-radius: 50px 20px;
+}
 .info-chick {
     display: block;
     margin-left: 50%;

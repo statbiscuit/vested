@@ -54,6 +54,62 @@ diet seems to improve growth. It is also known that there is a level of copper b
     output$chicktxt2 <- renderText("At your disposal you have  32 cages that each contain 16 chicks.
 In addition to the amount of copper in their diet there are other factors that influence the growth rate of
 chicks (e.g., brooder, tier position within the hen house etc.).")
+    lapply(paste(letters[1:8],1,sep = ""), function(i) {
+        output[[i]] <- renderUI({
+            tagList(
+                validate(need(!is.null(input$diet1[[i]]),"")),
+                if(input$diet1[[i]] == "Maize"){
+                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
+                        h4("Copper units added"), h4(input[[i]]))
+                }else{
+                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
+                        h4("Copper units added"), h4(input[[i]]))}
+                
+            )
+        })
+    })
+    lapply(paste(letters[1:8],2,sep = ""), function(i) {
+        output[[i]] <- renderUI({
+            tagList(
+                validate(need(!is.null(input$diet2[[i]]),"")),
+                if(input$diet2[[i]] == "Maize"){
+                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
+                        h4("Copper units added"), h4(input[[i]]))
+                }else{
+                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
+                        h4("Copper units added"), h4(input[[i]]))}
+                
+            )
+        })
+    })
+    lapply(paste(letters[1:8],3,sep = ""), function(i) {
+        output[[i]] <- renderUI({
+            tagList(
+                validate(need(!is.null(input$diet3[[i]]),"")),
+                if(input$diet3[[i]] == "Maize"){
+                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
+                        h4("Copper units added"), h4(input[[i]]))
+                }else{
+                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
+                        h4("Copper units added"), h4(input[[i]]))}
+                
+            )
+        })
+    })
+    lapply(paste(letters[1:8],4,sep = ""), function(i) {
+        output[[i]] <- renderUI({
+            tagList(
+                validate(need(!is.null(input$diet4[[i]]),"")),
+                if(input$diet4[[i]] == "Maize"){
+                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
+                        h4("Copper units added"), h4(input[[i]]))
+                }else{
+                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
+                        h4("Copper units added"), h4(input[[i]]))}
+                
+            )
+        })
+    })
     observe({
         if(length(unlist(input$diet1)) == 8 & length(unlist(input$diet2)) == 8 &
            length(unlist(input$diet3)) == 8 & length(unlist(input$diet4)) == 8){
@@ -62,16 +118,20 @@ chicks (e.g., brooder, tier position within the hen house etc.).")
     })
     data_chick <- reactive({
         data <- data.frame(
-            nest = 1:32,
-            brooder = rep(1:4, each = 8),
-            tier = rep(rep(1:4, each = 2), times = 4))
-        data$diet <- c(input$diet1, input$diet2, input$diet3, input$diet4)
-        data$copper <- c(input$c1 , input$c2 , input$c3 , input$c4 , input$c5 ,
-                         input$c6 , input$c7 , input$c8 , input$c9 , input$c10 , input$c11 , input$c12 ,
-                         input$c13 , input$c14 , input$c15 , input$c16 , input$c17 , input$c18 , input$c19 ,
-                         input$c20 , input$c21 , input$c22 , input$c23 , input$c24 , input$c25 , input$c26 ,
-                         input$c27 , input$c28 , input$c29 , input$c30 , input$c31 , input$c32)
+            chicknumber = 1:(32*16),
+            nest = rep(1:32,each = 16),
+            brooder = rep(rep(1:4, each = 8), each = 16),
+            tier = rep(rep(rep(1:4, each = 2), times = 4),each = 16))
+        data$diet <- rep(c(input$diet1, input$diet2, input$diet3, input$diet4),each = 16)
+        print(dim(data))
+        copper <- c(input$a1 , input$b1 , input$c1 , input$d1 , input$e1 , input$f1 , input$g1 , input$h1,
+                         input$a2 , input$b2 , input$c2 , input$d2 , input$e2 , input$f2 , input$g2 , input$h2,
+                         input$a3 , input$b3 , input$c3 , input$d3 , input$e3 , input$f3 , input$g3 , input$h3,
+                         input$a4 , input$b4 , input$c4 , input$d4 , input$e4 , input$f4 , input$g4 , input$h4)
+        data$copper <- rep(copper, each = 16)
+        print(dim(data))
         data$growth <- round(sim_chick_growth(data),2)
+        print(str(data))
         data <- apply(data,2,unlist)
         data
     })
@@ -107,7 +167,7 @@ chicks (e.g., brooder, tier position within the hen house etc.).")
  called Buttercup. Can you design a two-stage experiment and,
  based on the results, decide which combination of the three factors of
  heat, light, and variety gives the highest pummpkin yield?")
-    output$txt2 <- renderText("Due to funding cuts you only a small
+    output$txt2 <- renderText("Due to funding cuts you only a have small
  greenhouse to carry out this experiment. The greenhouse has six north
  facing plots (A–F) and six south facing (G–L). Your colleague tells you that from
  previous experiments in the greenhouse there is known to be a

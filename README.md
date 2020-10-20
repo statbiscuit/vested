@@ -1,12 +1,14 @@
 # vested
 
-`RShiny` application implementing **v**irtual **e**xperiment**s** for **t**eaching **e**xperimental **d**esign
+### `RShiny` application implementing **v**irtual **e**xperiment**s** for **t**eaching **e**xperimental **d**esign
+
+Students are typically indroduced to experimental design via textbook examples; statistical analysis is carried out on already collected, wrangled, and cleaned data. A virtual setting is a cost- and hassle-free way to emulate a real-world experiment. The `vested` `Rshiny` applicattion implements three virtual experiments: [Country Pumpkin](#country-pumpkin), [Chook eggsperiment](#chook-eggsperiment), and [Head Tomato](#head-tomato)
 
 ![](/www/img/vested.png)
 
+
 ## The **Country Pumpkin** experiment
 
-![](/www/img/pump_experiment.png)
 
 ### Background given
 
@@ -14,12 +16,17 @@ Two farmers, Esther and Gwenllian, grow pumpkins in Pukekohe for the farmer's ma
 
 Due to funding cuts you only a small greenhouse to carry out this experiment. The greenhouse has six north facing plots (A–F) and six south facing (G–L). Your colleague tells you that from previous experiments in the greenhouse there is known to be a substantial difference in yields between the two sides of the greenhouse.
 
+![](/www/img/pump_experiment.png)
+
 ### Example question to ask
+
+### References
+
+[Pollock, K., Ross-Parker, H., & Mead, R. (1979). A Sequence of Games Useful in Teaching Experimental Design to Agriculture Students. The American Statistician, 33(2), 70--76.](https://www.jstor.org/stable/2683224)
 
 
 ## The **Chook eggsperiment**
 
-![](/www/img/chooks_experiment.png)
 
 ### Background given
 
@@ -29,6 +36,7 @@ You are told that 150 units of copper added to either diet seems to improve grow
 
 At your disposal you have 32 cages that each contain 16 chicks. In addition to the amount of copper in their diet there are other factors that influence the growth rate of chicks (e.g., brooder, tier position within the hen house etc.).
 
+![](/www/img/chooks_experiment.png)
 
 ### Example question to ask
 
@@ -39,10 +47,18 @@ At your disposal you have 32 cages that each contain 16 chicks. In addition to t
  - Which diet responds more to copper? (i.e., which diet gives the larger increase in growth rate when copper is added at its best level, compared with no added copper?)
 
 
-## Articles on which experiments are based
-
-[Darius, P., Portier, K., & Schrevens, E. (2007). Virtual Experiments and Their Use in Teaching Experimental Design. International Statistical Review / Revue Internationale De Statistique, 75(3), 281--294.](http://www.jstor.org/stable/41509871)
+### References
 
 [Pollock, K., Ross-Parker, H., & Mead, R. (1979). A Sequence of Games Useful in Teaching Experimental Design to Agriculture Students. The American Statistician, 33(2), 70--76.](https://www.jstor.org/stable/2683224)
 
 [Mead, R., & Freeman, K. (1973). An Experiment Game. Journal of the Royal Statistical Society. Series C (Applied Statistics), 22(1), 1--6.](https://www.jstor.org/stable/2346298)
+
+
+## The **Head Tomato**
+
+
+### References
+
+[Darius, P., Portier, K., & Schrevens, E. (2007). Virtual Experiments and Their Use in Teaching Experimental Design. International Statistical Review / Revue Internationale De Statistique, 75(3), 281--294.](http://www.jstor.org/stable/41509871)
+
+

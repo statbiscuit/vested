@@ -12,13 +12,17 @@ Students are typically indroduced to experimental design via textbook examples; 
 
 ### Background given
 
-Two farmers, Esther and Gwenllian, grow pumpkins in Pukekohe for the farmer's market. After several years, Esther clearly gets higher yields than Gwenllian. But why? Several factors—variety, heat, and light—differ in cultivation methods. Farmer Esther is conservative; shee uses natural heating, ambient lighting, and a variety of pumpkin called Kumi Kumi, whilst Gwenllian uses supplementary heating, controlled lighting, and a variety called Buttercup. Can you design a two-stage experiment and, based on the results, decide which combination of the three factors of heat, light, and variety gives the highest pummpkin yield?
+Two farmers, Esther and Gwenllian, grow pumpkins in Pukekohe for the farmer's market. After several years, Esther clearly gets higher yields than Gwenllian. But why? Several factors—variety, heat, and light—differ in cultivation methods. Farmer Esther is conservative; shee uses natural heating, ambient lighting, and a variety of pumpkin called Kumi Kumi, whilst Gwenllian uses supplementary heating, controlled lighting, and a variety called Buttercup. Can you design a **two-stage experiment** and, based on the results, decide which combination of the three factors of heat, light, and variety gives the highest pummpkin yield?
 
 Due to funding cuts you only a small greenhouse to carry out this experiment. The greenhouse has six north facing plots (A–F) and six south facing (G–L). Your colleague tells you that from previous experiments in the greenhouse there is known to be a substantial difference in yields between the two sides of the greenhouse.
 
 ![](/www/img/pump_experiment.png)
 
-### Example question to ask
+### Example questions to ask
+
+ - What treatments do you plan to apply to each plot in the first-stage, and why?
+ - How did the results from the first-stage inform your choices in the second?
+ - Which combination, of heat, light, and variety, do you believe gives the maximal yield?
 
 ### References
 
@@ -38,7 +42,7 @@ At your disposal you have 32 cages that each contain 16 chicks. In addition to t
 
 ![](/www/img/chooks_experiment.png)
 
-### Example question to ask
+### Example questions to ask
 
  - What quantity of copper must be added to a maize diet to give maximum growth rate?
  - What quantity of copper must be added to a wheat diet to give maximum growth rate?
@@ -55,6 +59,10 @@ At your disposal you have 32 cages that each contain 16 chicks. In addition to t
 
 
 ## The **Head Tomato**
+
+Your family owns a tomato farm, has done for generations. Yileds are down, money's tight, and the farm is at risk of bankruptcy. There is however rumour of some fertilizer recipie handed down from your great-great-grandmother that will maximise the yield of tomatoes. The exact recipie has however been lost to the hands of time.
+
+You know it involves horse manure, but what is the optimal dose? To save your family's farm you must find the optimal dose of fertilier that produces the maximum average biomass of tomatoes. You should  note that the greenhouse is bordered to the East and West with heating strips. In addition, the greenhouse is lighted by light tubes, see the pattern of the floor for the resulting light intensity pattern that will be experienced by the plants. Heat and light are known to affect plant growth.
 
 
 ### References

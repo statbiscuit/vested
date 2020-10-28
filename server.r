@@ -44,6 +44,34 @@ function(input, output,session) {
             shinyjs::removeClass(selector = "body", class = "landing_page")
         })
     })
+    ## Tomato outputs
+    output$tomtxt <- renderText("Your family owns a tomato farm, has done for generations.
+Yileds are down, money's tight, and the farm is at risk of bankruptcy. There is however rumour
+of some fertilizer recipie handed down from your great-great-grandmother that will maximise
+the yield of tomatoes. The exact recipie has however been lost to the hands of time.")
+     output$tomtxt2 <- renderText("You know it involves horse manure, but what is the optimal dose?
+ To save your family's farm you must find the optimal dose of fertilier that produces the maximum
+average biomass of tomatoes. You should note that the greenhouse
+is bordered to the East and West with heating strips. In addition,
+the greenhouse is lighted by light tubes, see the pattern of the floor
+for the resulting light intensity pattern
+that will be experienced by the plants. Heat and light are known to affect plant growth.")
+    
+    output$tomato <- renderPlot({
+       
+       ##  ggplot(faithfuld, aes(waiting, eruptions)) +
+    ##         geom_raster(aes(fill = density), interpolate = TRUE) +
+    ##         north(y.min = 4, y.max = 5,x.min = 85, x.max = 95, scale = 1, symbol = 12)
+    ## }
+    ##  x <-y <- seq(0,1, length.out = 100)
+    ##     z <- outer(x,y)
+    ##     par(mar = c(0,0,0,0),oma = c(0,0,0,0))
+    ##     image(x,y,z, axes = FALSE, xlab = "",ylab = "", col = RColorBrewer::brewer.pal(9,"YlOrRd"),asp = 1)
+    ##     box()
+    ##     axis(2,lwd = 10, labels = FALSE,lwd.ticks = 0)
+    ##     axis(4,lwd = 10, labels = FALSE,lwd.ticks = 0)
+    }
+    )
     ## Chick output
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
 to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize

@@ -34,7 +34,59 @@ fluidPage(
     shinyjs::hidden(div(id = "experiment_page_tomato",
                div(id = "back_to_landing_tom", 
                    tags$a(class="btn btn-primary", icon("arrow-left"), h4("Back to landing page"))),
-                   h1("Tomato experiment")
+               h1("Who's the Head Tomato?"),
+               h2(textOutput("tomtxt")),
+               h2(textOutput("tomtxt2")),
+               div(class = "info-tom",dropdownButton(label = h2("Setup experiment"),
+                                                     status = 'info', icon = icon('clipboard'), circle = FALSE)),
+               div(class = "bgtom-wrap",
+                   div(class = "tomato-bck", fluidRow(
+                                                 column(
+                                                     tags$b("Exercise"),
+                                                     width = 12,
+                                                     bucket_list(
+                                                         header = "Drag the items in any desired bucket",
+                                                         group_name = "bucket_list_group",
+                                                         orientation = "horizontal",
+                                                         add_rank_list(
+                                                             text = "Drag from here",
+                                                             labels = list(
+                                                                 "one",
+                                                                 "two",
+                                                                 "three",
+                                                                 htmltools::tags$div(
+                                                                                     htmltools::em("Complex"),
+                                                                                     " html tag without a name"
+                                                                                 ),
+                                                                 "five" = htmltools::tags$div(
+                                                                                              htmltools::em("Complex"),
+                                                                                              " html tag with name: 'five'"
+                                                                                          )
+                                                             ),
+                                                             input_id = "rank_list_1"
+                                                         ),
+                                                         add_rank_list(
+                                                             text = "to here",
+                                                             labels = NULL,
+                                                             input_id = "rank_list_2"
+                                                         ),
+                                                          add_rank_list(
+                                                             text = "or to here",
+                                                             labels = NULL,
+                                                             input_id = "rank_list_3"
+                                                         )
+                                                     )
+                                                 ))
+                       ##plotOutput("tomato",width = "700px", height = "700px"))
+                       )),
+               br(),
+               br(),
+               div(class = "mid",
+                   shinyjs::hidden(downloadButton("download_tomato",
+                                                  tagList(h3("Let Tomatoes Grow"), h4(" & download data"))))),
+               hr(),
+               h4(class = "foot","Virtual experiment based on The Greenhouse Experiment in"),
+               h4(tags$a(href = "https://www.jstor.org/stable/41509871?seq=6#metadata_info_tab_contents", "Darius, P., Portier, K., & Schrevens, E. (2007). Virtual Experiments and Their Use in Teaching Experimental Design."))
                    )),
     ## Chicks
     shinyjs::hidden(div(id = "experiment_page_chick",

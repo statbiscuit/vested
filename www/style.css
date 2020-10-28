@@ -219,3 +219,20 @@ img.grow {
     margin-right: 50%;
     width: 50%;
 }
+/* chick (henhouse) plots */
+.info-tom {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 50%;
+}
+.bgtom-wrap {
+    background-color: lightgrey;
+    overflow: auto;
+}
+.tomato-bck {
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+}

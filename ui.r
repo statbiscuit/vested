@@ -38,47 +38,41 @@ fluidPage(
                h2(textOutput("tomtxt")),
                h2(textOutput("tomtxt2")),
                div(class = "info-tom",dropdownButton(label = h2("Setup experiment"),
+                                                     tagList(
+                                                         radioButtons("tray", h3(icon("seedling"),"Tray"), 1:12, inline = TRUE),
+                                                         h3("Drag and drop the plants onto the greenhouse floor"),
+                                                         conditionalPanel(condition = "input.tray == '1'",
+                                                                          fluidRow(
+                                                                              column(width = 4,
+                                                                                     dragSetUI("tray1col1", textval = list(h3(icon("seedling",class = "tray1"),"7g"),h3(icon("seedling",class = "tray1"),"7g"),
+                                                                                                                           h3(icon("seedling",class = "tray1"),"7g"), h3(icon("seedling",class = "tray1"),"7g")))
+                                                                                     ),
+                                                                              column(width = 4,
+                                                                                    dragSetUI("tray1col2", textval = list("plant 1","plant 2", "plant 3","plant 4"))
+                                                                                     ),
+                                                                              column(width = 4,
+                                                                                    dragSetUI("tray1col3", textval = list("plant 1","plant 2", "plant 3","plant 4"))
+                                                                                     )),
+                                                                          ),
+                                                         conditionalPanel(condition = "input.tray == '2'",
+                                                                          fluidRow(
+                                                                              column(width = 4,
+                                                                                     dragSetUI("tray2col1", textval = list("t2 p1"," t2 p2", "plant 3","plant 4"))
+                                                                                     ),
+                                                                              column(width = 4,
+                                                                                    dragSetUI("tray2col2", textval = list("plant 1","plant 2", "plant 3","plant 4"))
+                                                                                     ),
+                                                                              column(width = 4,
+                                                                                    dragSetUI("tray2col3", textval = list("plant 1","plant 2", "plant 3","plant 4"))
+                                                                                     )),
+                                                                          )
+                                                         ),
                                                      status = 'info', icon = icon('clipboard'), circle = FALSE)),
+               br(),
+               br(),
                div(class = "bgtom-wrap",
-                   div(class = "tomato-bck", fluidRow(
-                                                 column(
-                                                     tags$b("Exercise"),
-                                                     width = 12,
-                                                     bucket_list(
-                                                         header = "Drag the items in any desired bucket",
-                                                         group_name = "bucket_list_group",
-                                                         orientation = "horizontal",
-                                                         add_rank_list(
-                                                             text = "Drag from here",
-                                                             labels = list(
-                                                                 "one",
-                                                                 "two",
-                                                                 "three",
-                                                                 htmltools::tags$div(
-                                                                                     htmltools::em("Complex"),
-                                                                                     " html tag without a name"
-                                                                                 ),
-                                                                 "five" = htmltools::tags$div(
-                                                                                              htmltools::em("Complex"),
-                                                                                              " html tag with name: 'five'"
-                                                                                          )
-                                                             ),
-                                                             input_id = "rank_list_1"
-                                                         ),
-                                                         add_rank_list(
-                                                             text = "to here",
-                                                             labels = NULL,
-                                                             input_id = "rank_list_2"
-                                                         ),
-                                                          add_rank_list(
-                                                             text = "or to here",
-                                                             labels = NULL,
-                                                             input_id = "rank_list_3"
-                                                         )
-                                                     )
-                                                 ))
-                       ##plotOutput("tomato",width = "700px", height = "700px"))
-                       )),
+                   div(class = "tomato-bck", dropUI("greenhouse", style = "display:table; background-color: darkgrey;",row_n = 12, col_n = 12))
+                   ),
                br(),
                br(),
                div(class = "mid",

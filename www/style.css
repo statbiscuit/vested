@@ -219,7 +219,7 @@ img.grow {
     margin-right: 50%;
     width: 50%;
 }
-/* chick (henhouse) plots */
+/* tomato (greenhouse) plots */
 .info-tom {
     display: block;
     margin-left: 50%;
@@ -228,11 +228,14 @@ img.grow {
 }
 .bgtom-wrap {
     background-color: lightgrey;
-    overflow: auto;
+    height: 400px;
+    
 }
-.tomato-bck {
+#greenhouse {
     display: block;
-    margin: auto;
-    width: 50%;
-    padding: 0px;
+    width: 100%;
+    height: 400px;
+}
+.tray1 {
+    color:#E87722
 }

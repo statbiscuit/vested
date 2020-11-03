@@ -234,8 +234,48 @@ img.grow {
 #greenhouse {
     display: block;
     width: 100%;
-    height: 400px;
+    height: 600px;
 }
+/* tray seedling colours */
 .tray1 {
-    color:#E87722
+    color: #E87722
+}
+.tray2 {
+    color: #1B9E77
+}
+.tray3 {
+    color: #9ECAE1
+}
+.tray4 {
+    color: #7570B3
+}
+.tray5 {
+    color: #E7298A
+}
+.tray6 {
+    color: #66A61E
+}
+.tray7 {
+    color: #E6AB02
+}
+.tray8 {
+    color: #A6761D
+}
+.tray9 {
+    color: #666666
+}
+.tray10 {
+    color: #8DA0CB
+}
+.tray11 {
+    color: #FC8D62
+}
+.tray12 {
+    color: #66C2A5
+}
+
+/* style dragelements */
+.dragelement {
+    width: 50px;
+    height: 50px;
 }

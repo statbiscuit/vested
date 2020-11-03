@@ -56,22 +56,126 @@ is bordered to the East and West with heating strips. In addition,
 the greenhouse is lighted by light tubes, see the pattern of the floor
 for the resulting light intensity pattern
 that will be experienced by the plants. Heat and light are known to affect plant growth.")
-    
-    output$tomato <- renderPlot({
-       
-       ##  ggplot(faithfuld, aes(waiting, eruptions)) +
-    ##         geom_raster(aes(fill = density), interpolate = TRUE) +
-    ##         north(y.min = 4, y.max = 5,x.min = 85, x.max = 95, scale = 1, symbol = 12)
-    ## }
-    ##  x <-y <- seq(0,1, length.out = 100)
-    ##     z <- outer(x,y)
-    ##     par(mar = c(0,0,0,0),oma = c(0,0,0,0))
-    ##     image(x,y,z, axes = FALSE, xlab = "",ylab = "", col = RColorBrewer::brewer.pal(9,"YlOrRd"),asp = 1)
-    ##     box()
-    ##     axis(2,lwd = 10, labels = FALSE,lwd.ticks = 0)
-    ##     axis(4,lwd = 10, labels = FALSE,lwd.ticks = 0)
-    }
-    )
+    ## seedling weights for tray 1
+    output$tray1 <- renderUI({
+        out_list <- lapply(paste("a",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray1"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 2
+    output$tray2 <- renderUI({
+        out_list <- lapply(paste("b",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray2"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+    ## seedling weights for tray 3
+    output$tray3 <- renderUI({
+        out_list <- lapply(paste("c",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray3"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 4
+    output$tray4 <- renderUI({
+        out_list <- lapply(paste("d",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray4"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 5
+    output$tray5 <- renderUI({
+        out_list <- lapply(paste("e",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray5"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 6
+    output$tray6 <- renderUI({
+        out_list <- lapply(paste("f",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray6"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+    ## seedling weights for tray 7
+    output$tray7 <- renderUI({
+        out_list <- lapply(paste("g",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray7"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 8
+    output$tray8 <- renderUI({
+        out_list <- lapply(paste("h",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray8"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 9
+    output$tray9 <- renderUI({
+        out_list <- lapply(paste("i",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray9"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 10
+    output$tray10 <- renderUI({
+        out_list <- lapply(paste("j",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray10"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+    ## seedling weights for tray 11
+    output$tray11 <- renderUI({
+        out_list <- lapply(paste("k",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray11"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
+     ## seedling weights for tray 12
+    output$tray12 <- renderUI({
+        out_list <- lapply(paste("l",1:12,sep = ""),function(t){
+            dragUI(t,h3(icon("seedling",class = "tray12"), 
+                        renderText({
+                            round(runif(1,0,3),1)
+                        })))
+        })
+        do.call('tagList',out_list)
+    })
     ## Chick output
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
 to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize

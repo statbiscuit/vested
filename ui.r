@@ -40,35 +40,23 @@ fluidPage(
                div(class = "info-tom",dropdownButton(label = h2("Setup experiment"),
                                                      tagList(
                                                          radioButtons("tray", h3(icon("seedling"),"Tray"), 1:12, inline = TRUE),
-                                                         h3("Drag and drop the plants onto the greenhouse floor"),
-                                                         conditionalPanel(condition = "input.tray == '1'",
-                                                                          fluidRow(
-                                                                              column(width = 4,
-                                                                                     dragSetUI("tray1col1", textval = list(h3(icon("seedling",class = "tray1"),"7g"),h3(icon("seedling",class = "tray1"),"7g"),
-                                                                                                                           h3(icon("seedling",class = "tray1"),"7g"), h3(icon("seedling",class = "tray1"),"7g")))
-                                                                                     ),
-                                                                              column(width = 4,
-                                                                                    dragSetUI("tray1col2", textval = list("plant 1","plant 2", "plant 3","plant 4"))
-                                                                                     ),
-                                                                              column(width = 4,
-                                                                                    dragSetUI("tray1col3", textval = list("plant 1","plant 2", "plant 3","plant 4"))
-                                                                                     )),
-                                                                          ),
-                                                         conditionalPanel(condition = "input.tray == '2'",
-                                                                          fluidRow(
-                                                                              column(width = 4,
-                                                                                     dragSetUI("tray2col1", textval = list("t2 p1"," t2 p2", "plant 3","plant 4"))
-                                                                                     ),
-                                                                              column(width = 4,
-                                                                                    dragSetUI("tray2col2", textval = list("plant 1","plant 2", "plant 3","plant 4"))
-                                                                                     ),
-                                                                              column(width = 4,
-                                                                                    dragSetUI("tray2col3", textval = list("plant 1","plant 2", "plant 3","plant 4"))
-                                                                                     )),
-                                                                          )
+                                                         h3("Drag and drop the plants you want to use onto the greenhouse floor"),
+                                                         conditionalPanel(condition = "input.tray == '1'", uiOutput("tray1")),
+                                                         conditionalPanel(condition = "input.tray == '2'", uiOutput("tray2")),
+                                                         conditionalPanel(condition = "input.tray == '3'", uiOutput("tray3")),
+                                                         conditionalPanel(condition = "input.tray == '4'", uiOutput("tray4")),
+                                                         conditionalPanel(condition = "input.tray == '5'", uiOutput("tray5")),
+                                                         conditionalPanel(condition = "input.tray == '6'", uiOutput("tray6")),
+                                                         conditionalPanel(condition = "input.tray == '7'", uiOutput("tray7")),
+                                                         conditionalPanel(condition = "input.tray == '8'", uiOutput("tray8")),
+                                                         conditionalPanel(condition = "input.tray == '9'", uiOutput("tray9")),
+                                                         conditionalPanel(condition = "input.tray == '10'", uiOutput("tray10")),
+                                                         conditionalPanel(condition = "input.tray == '11'", uiOutput("tray11")),
+                                                         conditionalPanel(condition = "input.tray == '12'", uiOutput("tray12"))
                                                          ),
                                                      status = 'info', icon = icon('clipboard'), circle = FALSE)),
                br(),
+               h2("Drag and drop to arrange your plants on the greenhouse floor"),
                br(),
                div(class = "bgtom-wrap",
                    div(class = "tomato-bck", dropUI("greenhouse", style = "display:table; background-color: darkgrey;",row_n = 12, col_n = 12))

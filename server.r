@@ -62,7 +62,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray1"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 1")))
         })
         do.call('tagList',out_list)
     })
@@ -72,7 +72,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray2"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 2")))
         })
         do.call('tagList',out_list)
     })
@@ -82,7 +82,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray3"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 3")))
         })
         do.call('tagList',out_list)
     })
@@ -92,7 +92,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray4"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 4")))
         })
         do.call('tagList',out_list)
     })
@@ -102,7 +102,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray5"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 5")))
         })
         do.call('tagList',out_list)
     })
@@ -112,7 +112,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray6"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 6")))
         })
         do.call('tagList',out_list)
     })
@@ -122,7 +122,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray7"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 7")))
         })
         do.call('tagList',out_list)
     })
@@ -132,7 +132,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray8"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 8")))
         })
         do.call('tagList',out_list)
     })
@@ -142,7 +142,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray9"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 9")))
         })
         do.call('tagList',out_list)
     })
@@ -152,7 +152,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray10"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 10")))
         })
         do.call('tagList',out_list)
     })
@@ -162,7 +162,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray11"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 11")))
         })
         do.call('tagList',out_list)
     })
@@ -172,9 +172,35 @@ that will be experienced by the plants. Heat and light are known to affect plant
             dragUI(t,h3(icon("seedling",class = "tray12"), 
                         renderText({
                             round(runif(1,0,3),1)
-                        })))
+                        }), h5("tray 12")))
         })
         do.call('tagList',out_list)
+    })
+    observeEvent(input$greenhouse, {
+        ## 12 places in the below important
+        x <- paste(gsub("            ", "", input$greenhouse,fixed = TRUE))
+        x <- paste(gsub("  ", "NA",x,fixed = TRUE))
+        x <- stringr::str_sub(x, 3, stringr::str_length(x))
+        x <- paste(gsub("\n\nNANANANANA", "",x,fixed = TRUE))
+        x <-  matrix(stringr::str_split(x, "\n\n\n")[[1]], ncol = 1)
+        x <- apply(x,1, stringr::str_split, pattern = "\nNA", simplify = FALSE)
+        ##  print(x)
+        idx <- lapply(x,function(k) c(unlist(sapply(k, function(y) grep("tray",y)))))
+        idxs <- split(1:72,rep(1:12,each = 6))
+        out <- replicate(12,rep("",12))
+        for(j in 1:12){
+            if(length(idx[[j]]) != 0){
+                for (i in idx[[j]]){
+                    k <- as.numeric(which(sapply(idxs, FUN = function(y) i %in% y)))
+                    ts <- paste0(x[[j]][[1]][idxs[[k]]],collapse = "")
+                    ts1 <- gsub("NA", "",ts,fixed = TRUE)
+                    res <- gsub("\n", "",ts1,fixed = TRUE)
+                    out[j,i] <- res
+                }
+            }
+        }
+        print(out)
+        
     })
     ## Chick output
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm

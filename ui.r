@@ -62,6 +62,7 @@ fluidPage(
                    div(class = "tomato-bck", dropUI("greenhouse", style = "display:table; background-color: darkgrey;",row_n = 12, col_n = 12))
                    ),
                br(),
+               textOutput("foo"),
                br(),
                div(class = "mid",
                    shinyjs::hidden(downloadButton("download_tomato",

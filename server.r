@@ -183,24 +183,26 @@ that will be experienced by the plants. Heat and light are known to affect plant
         x <- stringr::str_sub(x, 3, stringr::str_length(x))
         x <- paste(gsub("\n\nNANANANANA", "",x,fixed = TRUE))
         x <-  matrix(stringr::str_split(x, "\n\n\n")[[1]], ncol = 1)
-        x <- apply(x,1, stringr::str_split, pattern = "\nNA", simplify = FALSE)
-        ##  print(x)
+        x <- apply(x,1, stringr::str_split, pattern = "\n", simplify = FALSE)
         idx <- lapply(x,function(k) c(unlist(sapply(k, function(y) grep("tray",y)))))
-        idxs <- split(1:72,rep(1:12,each = 6))
         out <- replicate(12,rep("",12))
+        ## figure out placement in 12 by 12 layout
         for(j in 1:12){
             if(length(idx[[j]]) != 0){
                 for (i in idx[[j]]){
-                    k <- as.numeric(which(sapply(idxs, FUN = function(y) i %in% y)))
-                    ts <- paste0(x[[j]][[1]][idxs[[k]]],collapse = "")
+                    k <- (i-3):(i+1)
+                    ts <- paste0(x[[j]][[1]][k],collapse = "")
                     ts1 <- gsub("NA", "",ts,fixed = TRUE)
                     res <- gsub("\n", "",ts1,fixed = TRUE)
-                    out[j,i] <- res
+                    col <- ifelse(min(k) > 12,min(k)  - (length(idx[[j]]) - 1)*5,min(k))
+                    ## crude catch for 13 col
+                    if(col > 12) col <- 12
+                    out[j,col] <- res
                 }
             }
         }
+
         print(out)
-        
     })
     ## Chick output
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm

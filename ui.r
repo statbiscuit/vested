@@ -84,7 +84,10 @@ fluidPage(
                                                          ),
                                                          status = 'info', icon = icon('clipboard'), circle = FALSE)),
                    div(class = "manure",dropdownButton(label = h2("Step 3: Set treatments"),
-                                                       uiOutput("tomato_treatments"),
+                                                       tagList(uiOutput("tomato_treatments"),
+                                                               numericInput("tom_days","Days to grow",
+                                                                            min = 0, max = 400, value = 0)
+                                                               ),
                                                        status = 'info', icon = icon('clipboard'), circle = FALSE)),
                    
                    div(class = "mid",

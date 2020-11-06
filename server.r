@@ -52,7 +52,7 @@ the yield of tomatoes. The exact recipie has however been lost to the hands of t
      output$tomtxt2 <- renderText("You know it involves horse manure, but what is the optimal dose?
  To save your family's farm you must find the optimal dose of fertilier that produces the maximum
 average biomass of tomatoes. You should note that the greenhouse
-is bordered to the East and West with heating strips. In addition,
+is bordered to left and right with heating strips. In addition,
 the greenhouse is lighted by light tubes, see the pattern of the floor
 for the resulting light intensity pattern
 that will be experienced by the plants. Heat and light are known to affect plant growth.")
@@ -176,7 +176,7 @@ that will be experienced by the plants. Heat and light are known to affect plant
         })
         do.call('tagList',out_list)
     })
-    observeEvent(input$greenhouse, {
+    data_tomato <- reactive({
         ## 12 places in the below important
         x <- paste(gsub("            ", "", input$greenhouse,fixed = TRUE))
         x <- paste(gsub("  ", "NA",x,fixed = TRUE))
@@ -201,9 +201,66 @@ that will be experienced by the plants. Heat and light are known to affect plant
                 }
             }
         }
+        pos <- c(out)
+        data <- data.frame(row = rep(1:12, times = 12), col = rep(1:12, each = 12),
+                           tray = as.numeric(sub(".*tray ", "", pos)),
+                           initial = as.numeric(sub("tray.*", "", pos)))
 
-        print(out)
+        data <- na.omit(data)
+        if(nrow(data > 0)){
+            data$id <- 1:nrow(data)
+        }
+        data
     })
+    output$tomato_treatments <- renderUI({
+        validate(need(nrow(data_tomato()) > 0,"Please choose some seedlings"))
+        lapply(data_tomato()$id, function(j){
+            lab <- paste("ID #:", data_tomato()[data_tomato()$id == j,5],
+                         "Tray:", data_tomato()[data_tomato()$id == j,3],
+                         "Row:", data_tomato()[data_tomato()$id == j,1],
+                         "Col:", data_tomato()[data_tomato()$id == j,2],
+                         "Weight:", data_tomato()[data_tomato()$id == j,4],"(g)")
+            radioButtons(inputId = paste("input", j, sep = "_"),label = lab,
+                         choices = c("None" = "none","Treatment 1" = "t1","Treatment 2" = "t2",
+                                     "Treatment 3" = "t3","Treatment 4" = "t4"), inline = TRUE)
+        })
+    })
+    data_tomato_update <- reactive({
+        req(nrow(data_tomato() > 0))
+        d <- data_tomato()
+        d$treatment <- c(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]]))
+        d$amount <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
+                                                   ifelse(d$treatment == "t2",input$treat_2_manure,
+                                                   ifelse(d$treatment == "t3",input$treat_3_manure,
+                                                   ifelse(d$treatment == "t4",input$treat_4_manure,0)))))
+        d
+        })
+    observe({
+        req(nrow(data_tomato()) > 0)
+        if(nrow(data_tomato_update()) > 0){
+            shinyjs::show("download_tomato")
+        }
+        
+    })
+    output$download_tomato <- downloadHandler(
+        filename = function() {
+            paste('tomato_data-', Sys.Date(), '.csv', sep='')
+        },
+        content = function(con) {
+            showModal(modalDialog(tagList(typed::typed(sample(list(
+                                                     h3("What type of tomato smells best? ...... A Roma"),
+                                                     h3("Why did the tomato turn red? ... Because it saw the salad dressing"),
+                                                     h3("Tomato paste is pretty viscous ... I guess it’s not very fast paste"),
+                                                     h3("Why did the Tomato go out with a prune? .... It couldn’t find a date!"),
+                                                     h3("What's a tomato's greatest desire? ...... A jerrymato.")),1),
+                                                     typeSpeed = 50, loop = FALSE),
+                                          img(class = "grow",src = "img/growing.gif")),footer = NULL))
+            Sys.sleep(5)
+            removeModal()
+            write.csv(data_tomato_update(), con, row.names = FALSE)
+            
+        }
+    )
     ## Chick output
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
 to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize
@@ -291,7 +348,6 @@ chicks (e.g., brooder, tier position within the hen house etc.).")
         data$copper <- rep(copper, each = 16)
         print(dim(data))
         data$growth <- round(sim_chick_growth(data),2)
-        print(str(data))
         data <- apply(data,2,unlist)
         data
     })

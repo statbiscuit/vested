@@ -228,19 +228,26 @@ img.grow {
     width: 50%;
 }
 /* tomato (greenhouse) plots */
-.info-tom {
+.info-tom-1 {
     display: block;
-    margin-left: 50%;
-    margin-right: 50%;
+    margin-left: 40%;
+    margin-right: 40%;
     width: 50%;
+}
+.info-tom {
+    display: flex;
+}
+.info-tom > div {
+  flex: 1; 
 }
 .bgtom-wrap {
     background-color: lightgrey;  
-    height: 400px;
+    height: 600px;
     
 }
 #greenhouse {
-    background: url(img/gradient.svg);  
+    background: url(img/gradient.png);
+    background-size: 100% 100%;
     display: block;
     width: 100%;
     height: 600px;

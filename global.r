@@ -7,6 +7,7 @@ library(shinyRadioMatrix)
 library(ggplot2)
 library(ggsn)
 library(shinyDND)
+library(stringr)
 
 
 source("scripts/pumpkin.r")

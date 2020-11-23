@@ -228,40 +228,40 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
                                      "Treatment 3" = "t3","Treatment 4" = "t4"), inline = TRUE)
         })
     })
-    data_tomato_update <- reactive({
-        req(nrow(data_tomato() > 0))
-        d <- data_tomato()
-        treatment <- unlist(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]]))
-        req(sum(is.null(treatment)) == 0)
-        d$treatment <- c(treatment)
-        d$amount <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
-                                                   ifelse(d$treatment == "t2",input$treat_2_manure,
-                                                   ifelse(d$treatment == "t3",input$treat_3_manure,
-                                                   ifelse(d$treatment == "t4",input$treat_4_manure,0)))))
-        ## simple heat ATM
-        heat <- matrix(rep(c(seq(22,10,by = -2),seq(14,22,by = 2)), each = 12), ncol = 12)
-        ## simple light ATM
-        light <- matrix(rep(seq(1,0.1,by = -0.08), each = 12), ncol = 12, byrow = TRUE)
-        ## crude biomass growth model atm
-        bio <- hm <- lm <- numeric(nrow(d)) 
-        for(i in 1:length(bio)){
-            hm[i] <- heat[d$row[i], d$col[i]]
-            lm[i] <- light[d$row[i], d$col[i]]
-            bio[i] <- tomgro(initial = d$initial[i],manure = d$amount[i]/100, days = input$tom_days, heat = hm[i], light = lm[i])
-        }
-        d$days <- input$tom_days
-        d$heat_metric <- hm
-        d$light_metric <- lm
-        d$yield <- bio
-        d
-    })
-    observe({
-        req(nrow(data_tomato()) > 0)
-        if(nrow(data_tomato_update()) > 0){
-            shinyjs::show("download_tomato")
-        }
+    ## data_tomato_update <- reactive({
+    ##     req(nrow(data_tomato() > 0))
+    ##     d <- data_tomato()
+    ##     treatment <- unlist(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]]))
+    ##     req(sum(is.null(treatment)) == 0)
+    ##     d$treatment <- c(treatment)
+    ##     d$amount <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
+    ##                                                ifelse(d$treatment == "t2",input$treat_2_manure,
+    ##                                                ifelse(d$treatment == "t3",input$treat_3_manure,
+    ##                                                ifelse(d$treatment == "t4",input$treat_4_manure,0)))))
+    ##     ## simple heat ATM
+    ##     heat <- matrix(rep(c(seq(22,10,by = -2),seq(14,22,by = 2)), each = 12), ncol = 12)
+    ##     ## simple light ATM
+    ##     light <- matrix(rep(seq(1,0.1,by = -0.08), each = 12), ncol = 12, byrow = TRUE)
+    ##     ## crude biomass growth model atm
+    ##     bio <- hm <- lm <- numeric(nrow(d)) 
+    ##     for(i in 1:length(bio)){
+    ##         hm[i] <- heat[d$row[i], d$col[i]]
+    ##         lm[i] <- light[d$row[i], d$col[i]]
+    ##         bio[i] <- tomgro(initial = d$initial[i],manure = d$amount[i]/100, days = input$tom_days, heat = hm[i], light = lm[i])
+    ##     }
+    ##     d$days <- input$tom_days
+    ##     d$heat_metric <- hm
+    ##     d$light_metric <- lm
+    ##     d$yield <- bio
+    ##     d
+    ## })
+    ## observe({
+    ##     req(nrow(data_tomato()) > 0)
+    ##     if(nrow(data_tomato_update()) > 0){
+    ##         shinyjs::show("download_tomato")
+    ##     }
         
-    })
+    ## })
     output$download_tomato <- downloadHandler(
         filename = function() {
             paste('tomato_data-', Sys.Date(), '.csv', sep='')
@@ -287,7 +287,8 @@ to look into how pullets respond to the amount of copper added to basic diets of
 You need to determine the optimum amount of copper to add to their diets to improve growth rate.")
      output$chicktxt1 <- renderText("You are told that 150 units of copper added to either
 diet seems to improve growth. It is also known that there is a level of copper beyond which
- toxic effects will reduce growth rate. So what is the optimum amount to add?")
+ toxic effects will reduce growth rate; based on some anecdotal evidence you think this is around 700 units.
+ So what is the optimum amount to add?")
     output$chicktxt2 <- renderText("At your disposal you have  32 cages that each contain 16 chicks.
 In addition to the amount of copper in their diet there are other factors that influence the growth rate of
 chicks (e.g., brooder, tier position within the hen house etc.).")

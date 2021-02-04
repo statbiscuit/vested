@@ -1,4 +1,5 @@
 ## remotes::install_github("JohnCoene/typed")
+## remotes::install_github("ayayron/shinydnd")
 library(typed)
 library(shiny)
 library(shinyjs)

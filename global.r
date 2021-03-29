@@ -1,5 +1,5 @@
 ## CRAN packages
-pkgs <- c("shinyjs","shinyWidgets","shinyRadioMatrix","ggplot2","ggsn","shinyDND","stringr")
+pkgs <- c("shinyjs","shinyWidgets","shinyRadioMatrix","ggplot2","ggsn","shinyDND","stringr","remotes")
 options(warn = -1)
 for (i in pkgs){
   if (!require(i, quietly = TRUE, character.only = TRUE)){

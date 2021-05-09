@@ -62,7 +62,7 @@ fluidPage(
                h2("Drag and drop to arrange your plants on the greenhouse floor"),
                br(),
                div(class = "bgtom-wrap",
-                   div(class = "tomato-bck", dropUI("greenhouse", style = "display:table; background-color: darkgrey;",row_n = 12, col_n = 12))
+                   div(class = "tomato-bck", dropUI("greenhouse", style = "background-color: darkgrey;",row_n = 12, col_n = 12))
                    ),
                br(),
                br(),

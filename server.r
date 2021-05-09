@@ -180,37 +180,15 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         do.call('tagList',out_list)
     })
     data_tomato <- reactive({
-        ## 12 places in the below important
-        x <- paste(gsub("            ", "", input$greenhouse,fixed = TRUE))
-        x <- paste(gsub("  ", "NA",x,fixed = TRUE))
-        x <- stringr::str_sub(x, 3, stringr::str_length(x))
-        x <- paste(gsub("\n\nNANANANANA", "",x,fixed = TRUE))
-        x <-  matrix(stringr::str_split(x, "\n\n\n")[[1]], ncol = 1)
-        x <- apply(x,1, stringr::str_split, pattern = "\n", simplify = FALSE)
-        idx <- lapply(x,function(k) c(unlist(sapply(k, function(y) grep("tray",y)))))
-        out <- replicate(12,rep("",12))
-        ## figure out placement in 12 by 12 layout
-        for(j in 1:12){
-            if(length(idx[[j]]) != 0){
-                for (i in idx[[j]]){
-                    k <- (i-3):(i+1)
-                    ts <- paste0(x[[j]][[1]][k],collapse = "")
-                    ts1 <- gsub("NA", "",ts,fixed = TRUE)
-                    res <- gsub("\n", "",ts1,fixed = TRUE)
-                    col <- ifelse(min(k) > 12,min(k)  - (length(idx[[j]]) - 1)*5,min(k))
-                    ## crude catch for 13 col
-                    if(col > 12) col <- 12
-                    out[j,col] <- res
-                }
-            }
-        }
-        pos <- c(out)
+        gh.v <- unlist(input$greenhouse)
+        trays <- as.numeric(gsub(".*tray (\\d+)\n.*", "\\1", gh.v))
+        initials <- as.numeric(sub("[\n ]*([\\d.]+)\n[\n\\d\\s\\w]*", "\\1", gh.v, perl = TRUE))
         data <- data.frame(row = rep(1:12, times = 12), col = rep(1:12, each = 12),
-                           tray = as.numeric(sub(".*tray ", "", pos)),
-                           initial = as.numeric(sub("tray.*", "", pos)))
-
+                           tray = trays,
+                           initial = initials)
+        data[data == ""] <- NA
         data <- na.omit(data)
-        if(nrow(data > 0)){
+        if(nrow(data) > 0){
             data$id <- 1:nrow(data)
         }
         data

@@ -1,16 +1,14 @@
 ## CRAN packages
-pkgs <- c("shinyjs","shinyWidgets","shinyRadioMatrix","ggplot2","ggsn","shinyDND","stringr","remotes")
-options(warn = -1)
-for (i in pkgs){
-  if (!require(i, quietly = TRUE, character.only = TRUE)){
-    install.packages(i)
-  }
-  require(i, quietly = TRUE, character.only = TRUE)
-}
+library(shinyjs)
+library(shinyWidgets)
+library(shinyRadioMatrix)
+library(ggplot2)
+library(ggsn)
+library(stringr)
+library(remotes)
 ## packages from GitHub
-if(!require("typed",quietly = TRUE, character.only = TRUE)) remotes::install_github("JohnCoene/typed")
-require(typed)
-options(warn = 0)
+library(typed)
+library(shinyDNDvested)
 
 ## experiment scripts
 source("scripts/pumpkin.r")

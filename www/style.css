@@ -242,7 +242,8 @@ img.grow {
 }
 .bgtom-wrap {
     background-color: lightgrey;  
-    height: 600px;
+    height: auto;
+    min-height: 600px;
     
 }
 #greenhouse {
@@ -250,8 +251,15 @@ img.grow {
     background-size: 100% 100%;
     display: block;
     width: 100%;
-    height: 600px;
+    height: auto;
+    min-height: 600px;
 }
+
+#greenhouse h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 /* tray seedling colours */
 .tray1 {
     color: #E87722

@@ -1,5 +1,7 @@
 ## ui.R ##
 ## Virtual Experiments to Teach Experimental Design
+source("ui-helpers.r")
+
 fluidPage(
     ## set up shinyjs
     useShinyjs(),
@@ -114,152 +116,136 @@ fluidPage(
                                                                                          column(width = 4,
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
-                                                                                                radioMatrixInput(inputId = "diet1",
-                                                                                                                 rowIDs = paste(letters[1:8],1,sep = ""),
-                                                                                                                 rowLLabels =  1:8,
-                                                                                                                 rowRLabels = rep("Brooder 1",8),
-                                                                                                                 choices = c("Maize","Wheat"),
-                                                                                                                 selected = NULL)),
-                                                                                         column(width = 6,
+                                                                                                brooderRadio(1),
+                                                                                                actionButton("shuff1", "Randomise Diet (SRS)", icon = icon("random"))),
+                                                                                         column(width = 8,
                                                                                                 h3(icon("flask"),
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("a1","Nest 1",0,700,1)),
+                                                                                                           sliderInput("a1","Nest 1",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("b1","Nest 2",0,700,1))
-                                                                                                    ),
+                                                                                                           sliderInput("b1","Nest 2",0,700,0,50))
+                                                                                                ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c1","Nest 3",0,700,1)),
+                                                                                                           sliderInput("c1","Nest 3",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("d1","Nest 4",0,700,1))
-                                                                                                    ),
+                                                                                                           sliderInput("d1","Nest 4",0,700,0,50))
+                                                                                                ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("e1","Nest 5",0,700,1)),
+                                                                                                           sliderInput("e1","Nest 5",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("f1","Nest 6",0,700,1))
-                                                                                                    ),
+                                                                                                           sliderInput("f1","Nest 6",0,700,0,50))
+                                                                                                ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("g1","Nest 7",0,700,1)),
+                                                                                                           sliderInput("g1","Nest 7",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("h1","Nest 8",0,700,1))
+                                                                                                           sliderInput("h1","Nest 8",0,700,0,50))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '2'",
                                                                                      fluidRow(
                                                                                          column(width = 4,
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
-                                                                                                radioMatrixInput(inputId = "diet2",
-                                                                                                                 rowIDs = paste(letters[1:8],2,sep = ""),
-                                                                                                                 rowLLabels =  9:16,
-                                                                                                                 rowRLabels = rep("Brooder 2",8),
-                                                                                                                 choices = c("Maize","Wheat"),
-                                                                                                                 selected = NULL)),
-                                                                                         column(width = 6,
+                                                                                                brooderRadio(2),
+                                                                                         actionButton("shuff2", "Randomise Diet (SRS)", icon = icon("random"))),
+                                                                                         column(width = 8,
                                                                                                 h3(icon("flask"),
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("a2","Nest 9",0,700,1)),
+                                                                                                           sliderInput("a2","Nest 9",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("b2","Nest 10",0,700,1))
+                                                                                                           sliderInput("b2","Nest 10",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c2","Nest 11",0,700,1)),
+                                                                                                           sliderInput("c2","Nest 11",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("d2","Nest 12",0,700,1))
+                                                                                                           sliderInput("d2","Nest 12",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("e2","Nest 13",0,700,1)),
+                                                                                                           sliderInput("e2","Nest 13",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("f2","Nest 14",0,700,1))
+                                                                                                           sliderInput("f2","Nest 14",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("g2","Nest 15",0,700,1)),
+                                                                                                           sliderInput("g2","Nest 15",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("h2","Nest 16",0,700,1))
+                                                                                                           sliderInput("h2","Nest 16",0,700,0,50))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '3'",
                                                                                      fluidRow(
                                                                                          column(width = 4,
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
-                                                                                                radioMatrixInput(inputId = "diet3",
-                                                                                                                 rowIDs = paste(letters[1:8],3,sep = ""),
-                                                                                                                 rowLLabels =  17:24,
-                                                                                                                 rowRLabels = rep("Brooder 3",8),
-                                                                                                                 choices = c("Maize","Wheat"),
-                                                                                                                 selected = NULL)),
-                                                                                         column(width = 6,
+                                                                                                brooderRadio(3),
+                                                                                                actionButton("shuff3", "Randomise Diet (SRS)", icon = icon("random"))),
+                                                                                         column(width = 8,
                                                                                                 h3(icon("flask"),
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("a3","Nest 17",0,700,1)),
+                                                                                                           sliderInput("a3","Nest 17",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("b3","Nest 18",0,700,1))
+                                                                                                           sliderInput("b3","Nest 18",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c3","Nest 19",0,700,1)),
+                                                                                                           sliderInput("c3","Nest 19",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("d3","Nest 20",0,700,1))
+                                                                                                           sliderInput("d3","Nest 20",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("e3","Nest 21",0,700,1)),
+                                                                                                           sliderInput("e3","Nest 21",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("f3","Nest 22",0,700,1))
+                                                                                                           sliderInput("f3","Nest 22",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("g3","Nest 23",0,700,1)),
+                                                                                                           sliderInput("g3","Nest 23",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("h3","Nest 24",0,700,1))
+                                                                                                           sliderInput("h3","Nest 24",0,700,0,50))
                                                                                                     )))),
                                                                     conditionalPanel(condition = "input.brood == '4'",
                                                                                      fluidRow(
                                                                                          column(width = 4,
                                                                                                 h3(icon("utensil-spoon"),
                                                                                                    tags$b("Diet")),
-                                                                                                radioMatrixInput(inputId = "diet4",
-                                                                                                                 rowIDs = paste(letters[1:8],4,sep = ""),
-                                                                                                                 rowLLabels =  25:32,
-                                                                                                                 rowRLabels = rep("Brooder 4",8),
-                                                                                                                 choices = c("Maize","Wheat"),
-                                                                                                                 selected = NULL)),
-                                                                                         column(width = 6,
+                                                                                                brooderRadio(4),
+                                                                                                actionButton("shuff4", "Randomise Diet (SRS)", icon = icon("random"))),
+                                                                                         column(width = 8,
                                                                                                 h3(icon("flask"),
                                                                                                    "Units of copper to add to diet"),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("a4","Nest 25",0,700,1)),
+                                                                                                           sliderInput("a4","Nest 25",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("b4","Nest 26",0,700,1))
+                                                                                                           sliderInput("b4","Nest 26",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("c4","Nest 27",0,700,1)),
+                                                                                                           sliderInput("c4","Nest 27",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("d4","Nest 28",0,700,1))
+                                                                                                           sliderInput("d4","Nest 28",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("e4","Nest 29",0,700,1)),
+                                                                                                           sliderInput("e4","Nest 29",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("f4","Nest 30",0,700,1))
+                                                                                                           sliderInput("f4","Nest 30",0,700,0,50))
                                                                                                     ),
                                                                                                 fluidRow(
                                                                                                     column(width = 6,
-                                                                                                           numericInput("g4","Nest 31",0,700,1)),
+                                                                                                           sliderInput("g4","Nest 31",0,700,0,50)),
                                                                                                     column(width = 6,
-                                                                                                           numericInput("h4","Nest 32",0,700,1))
+                                                                                                           sliderInput("h4","Nest 32",0,700,0,50))
                                                                                                     ))))
                                                                 ), status = 'info', icon = icon('clipboard'), circle = FALSE)),
                         br(),

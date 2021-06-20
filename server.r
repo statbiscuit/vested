@@ -1,5 +1,9 @@
 ## server.R ##
 function(input, output,session) {
+    ## Data variables
+    ### Brood sim
+    diets <- shiny::reactiveVal()
+
     ## go back to landing page
     observe({
         onclick("back_to_landing_tom", {
@@ -259,7 +263,72 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
             
         }
     )
+
     ## Chick output
+    observe({
+        req(any(!is.null(c(input$dieta1, input$dietb1, input$dietc1, input$dietd1, input$diete1, input$dietf1, input$dietg1, input$dieth1,
+                           input$dieta2, input$dietb2, input$dietc2, input$dietd2, input$diete2, input$dietf2, input$dietg2, input$dieth2,
+                           input$dieta3, input$dietb3, input$dietc3, input$dietd3, input$diete3, input$dietf3, input$dietg3, input$dieth3,
+                           input$dieta4, input$dietb4, input$dietc4, input$dietd4, input$diete4, input$dietf4, input$dietg4, input$dieth4))))
+        ids <- paste0(rep(letters[1:8], 4), rep(1:4, each = 8))
+
+        # Update list of diets for updating the downloadable dataframe...
+        if (!inherits(diets(), "character"))
+            ldiets <- character(32)
+        else
+            ldiets <- diets()
+
+        # Update UI
+        lapply(1:32, function(i) {
+            v <- input[[paste0('diet', ids[i])]]
+            output[[ids[i]]] <- renderUI({
+                if (is.null(v))
+                    tagList(div(""))
+                else
+                    tagList(if (v == "Maize") {
+                        div(
+                            class = "boxed_emo",
+                            h4("Diet"),
+                            img(class = "grow", src = "img/corn.png"),
+                            h4("Copper units added"),
+                            h4(input[[ids[i]]])
+                        )
+                    } else{
+                        div(
+                            class = "boxed_emo",
+                            h4("Diet"),
+                            img(class = "grow", src = "img/wheat.png"),
+                            h4("Copper units added"),
+                            h4(input[[ids[i]]])
+                        )
+                    })
+            })
+
+            if (!is.null(v)) {
+                ldiets[i] <<- v
+            }
+        })
+
+        # Update for DF
+        diets(ldiets)
+    })
+
+    observeEvent(input$shuff1, {
+        chickRandomise(session, 1)
+    })
+
+    observeEvent(input$shuff2, {
+        chickRandomise(session, 2)
+    })
+
+    observeEvent(input$shuff3, {
+        chickRandomise(session, 3)
+    })
+
+    observeEvent(input$shuff4, {
+        chickRandomise(session, 4)
+    })
+
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
 to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize
 You need to determine the optimum amount of copper to add to their diets to improve growth rate.")
@@ -269,82 +338,25 @@ diet seems to improve growth. It is also known that there is a level of copper b
     output$chicktxt2 <- renderText("At your disposal you have  32 cages that each contain 16 chicks.
 In addition to the amount of copper in their diet there are other factors that influence the growth rate of
 chicks (e.g., brooder, tier position within the hen house etc.).")
-    lapply(paste(letters[1:8],1,sep = ""), function(i) {
-        output[[i]] <- renderUI({
-            tagList(
-                validate(need(!is.null(input$diet1[[i]]),"")),
-                if(input$diet1[[i]] == "Maize"){
-                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
-                        h4("Copper units added"), h4(input[[i]]))
-                }else{
-                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
-                        h4("Copper units added"), h4(input[[i]]))}
-                
-            )
-        })
-    })
-    lapply(paste(letters[1:8],2,sep = ""), function(i) {
-        output[[i]] <- renderUI({
-            tagList(
-                validate(need(!is.null(input$diet2[[i]]),"")),
-                if(input$diet2[[i]] == "Maize"){
-                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
-                        h4("Copper units added"), h4(input[[i]]))
-                }else{
-                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
-                        h4("Copper units added"), h4(input[[i]]))}
-                
-            )
-        })
-    })
-    lapply(paste(letters[1:8],3,sep = ""), function(i) {
-        output[[i]] <- renderUI({
-            tagList(
-                validate(need(!is.null(input$diet3[[i]]),"")),
-                if(input$diet3[[i]] == "Maize"){
-                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
-                        h4("Copper units added"), h4(input[[i]]))
-                }else{
-                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
-                        h4("Copper units added"), h4(input[[i]]))}
-                
-            )
-        })
-    })
-    lapply(paste(letters[1:8],4,sep = ""), function(i) {
-        output[[i]] <- renderUI({
-            tagList(
-                validate(need(!is.null(input$diet4[[i]]),"")),
-                if(input$diet4[[i]] == "Maize"){
-                    div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/corn.png"),
-                        h4("Copper units added"), h4(input[[i]]))
-                }else{
-                     div(class = "boxed_emo",h4("Diet"), img(class = "grow", src = "img/wheat.png"),
-                        h4("Copper units added"), h4(input[[i]]))}
-                
-            )
-        })
-    })
+
     observe({
-        if(length(unlist(input$diet1)) == 8 & length(unlist(input$diet2)) == 8 &
-           length(unlist(input$diet3)) == 8 & length(unlist(input$diet4)) == 8){
+        if(!any(diets() == "")){
             shinyjs::show("download_chick")
         }
     })
+
     data_chick <- reactive({
         data <- data.frame(
             chicknumber = 1:(32*16),
             nest = rep(1:32,each = 16),
             brooder = rep(rep(1:4, each = 8), each = 16),
             tier = rep(rep(rep(1:4, each = 2), times = 4),each = 16))
-        data$diet <- rep(c(input$diet1, input$diet2, input$diet3, input$diet4),each = 16)
-        print(dim(data))
+        data$diet <- rep(diets(),each = 16)
         copper <- c(input$a1 , input$b1 , input$c1 , input$d1 , input$e1 , input$f1 , input$g1 , input$h1,
                          input$a2 , input$b2 , input$c2 , input$d2 , input$e2 , input$f2 , input$g2 , input$h2,
                          input$a3 , input$b3 , input$c3 , input$d3 , input$e3 , input$f3 , input$g3 , input$h3,
                          input$a4 , input$b4 , input$c4 , input$d4 , input$e4 , input$f4 , input$g4 , input$h4)
         data$copper <- rep(copper, each = 16)
-        print(dim(data))
         data$growth <- round(sim_chick_growth(data),2)
         data <- apply(data,2,unlist)
         data

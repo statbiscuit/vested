@@ -68,7 +68,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("a",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray1"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 1")))
         })
         do.call('tagList',out_list)
@@ -78,7 +78,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("b",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray2"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 2")))
         })
         do.call('tagList',out_list)
@@ -88,7 +88,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("c",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray3"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 3")))
         })
         do.call('tagList',out_list)
@@ -98,7 +98,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("d",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray4"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 4")))
         })
         do.call('tagList',out_list)
@@ -108,7 +108,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("e",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray5"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 5")))
         })
         do.call('tagList',out_list)
@@ -118,7 +118,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("f",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray6"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 6")))
         })
         do.call('tagList',out_list)
@@ -128,7 +128,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("g",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray7"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 7")))
         })
         do.call('tagList',out_list)
@@ -148,7 +148,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("i",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray9"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 9")))
         })
         do.call('tagList',out_list)
@@ -168,7 +168,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("k",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray11"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 11")))
         })
         do.call('tagList',out_list)
@@ -178,7 +178,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         out_list <- lapply(paste("l",1:12,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray12"), 
                         renderText({
-                            round(runif(1,0,3),1)
+                            paste(round(runif(1,0,3),1), "m")
                         }), h5("tray 12")))
         })
         do.call('tagList',out_list)
@@ -216,7 +216,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         treatment <- unlist(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]]))
         req(sum(is.null(treatment)) == 0)
         d$treatment <- c(treatment)
-        d$amount <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
+        d$fertilizer <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
                                                    ifelse(d$treatment == "t2",input$treat_2_manure,
                                                    ifelse(d$treatment == "t3",input$treat_3_manure,
                                                    ifelse(d$treatment == "t4",input$treat_4_manure,0)))))
@@ -413,6 +413,9 @@ chicks (e.g., brooder, tier position within the hen house etc.).")
                     }
                 })
         })
+    })
+     observeEvent(input$shuffle_pumpkins, {
+        pumpRandomise(session)
     })
     data <- reactive({
         h <- rep("Natural",12)

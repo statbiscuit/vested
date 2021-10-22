@@ -48,6 +48,14 @@ h4.foot {
     font-size: 10px;
     text-align: center;
 }
+h2.pump_h2{
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1.1;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
 a {
     color: white;
 }
@@ -127,10 +135,11 @@ div.mid {
 }
 
 .info {
-    display: block;
-    margin-left: 50%;
-    margin-right: 50%;
-    width: 20%;
+    /* display: block; */
+    /* margin-left: 50%; */
+    /* margin-right: 50%; */
+    /* width: 50%;  */
+    background-color: white;
 }
 .shiny-radiomatrix{
     padding: 10px;
@@ -155,14 +164,15 @@ div.mid {
 /* pumpkin plots */
 .pump_wrapper {
     display: grid;
-    grid-template-columns: 16% 16% 16% 16% 16% 16%;
-    grid-template-rows: 40%;
-    grid-gap: 125px 2px;
+    grid-template-columns: 20% 20%;
+    grid-template-rows: auto;
+    grid-gap: 15px;
     justify-content: space-evenly;
     border: 10px solid white;
 }
 .bg-wrap {
-    background: url(img/tiles.png);           
+    background: url(img/tiles.png);
+    width: 100%;
 }
 .box {
     background: url(img/soil.png);
@@ -170,6 +180,7 @@ div.mid {
     border-radius: 5px;
     padding: 10px;
     height: 275px;
+    width: 275px;
 }
 /* pumpkin grow gif */
 img.grow {
@@ -229,10 +240,9 @@ img.grow {
 }
 /* tomato (greenhouse) plots */
 .info-tom-1 {
+    background: white;
     display: block;
-    margin-left: 40%;
-    margin-right: 40%;
-    width: 50%;
+    width: 100%;
 }
 .info-tom {
     display: flex;
@@ -240,19 +250,15 @@ img.grow {
 .info-tom > div {
   flex: 1; 
 }
-.bgtom-wrap {
-    background-color: lightgrey;  
-    height: auto;
-    min-height: 600px;
-    
+.tomato-bck {
+    background: black;
+    width: 100%;
 }
 #greenhouse {
     background: url(img/gradient.png);
-    background-size: 100% 100%;
-    display: block;
+    background-size: 100%;
+    height: 100%;
     width: 100%;
-    height: auto;
-    min-height: 600px;
 }
 
 #greenhouse h3 {

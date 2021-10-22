@@ -51,3 +51,5 @@ chickRandomise <- function(session, x) {
     updateRadioButtons(session, paste0('diet', letters[i], x), selected = newVals[i])
   }
 }
+
+

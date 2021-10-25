@@ -62,11 +62,11 @@ fluidPage(
                                       )))),
                    column(8,
                           div(class = "tomato-bck",
-                              div(h2("Drag and drop to arrange your plants on the greenhouse floor"),
+                              h2("Drag and drop to arrange your plants on the greenhouse floor"),
                               br(),
                               dropUI("greenhouse",
-                                     style = "background-color: darkgrey; border: solid 5px;",
-                                     row_n = 12, col_n = 12)))
+                                     style = "background-color: darkgrey; border: solid 5px; width: 100%;",
+                                     row_n = 12, col_n = 12))
                           )
                ),
                br(),

@@ -186,7 +186,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     data_tomato <- reactive({
         gh.v <- unlist(input$greenhouse)
         trays <- as.numeric(gsub(".*tray (\\d+)\n.*", "\\1", gh.v))
-        initials <- as.numeric(sub("[\n ]*([\\d.]+)\n[\n\\d\\s\\w]*", "\\1", gh.v, perl = TRUE))
+        initials <- as.numeric(sub("[\n ]*([\\d.]+)[\\s\\w\n][\n\\d\\s\\w]*", "\\1", gh.v, perl = TRUE))
         data <- data.frame(row = rep(1:12, times = 12), col = rep(1:12, each = 12),
                            tray = trays,
                            initial = initials)
@@ -195,6 +195,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         if(nrow(data) > 0){
             data$id <- 1:nrow(data)
         }
+       
         data
     })
     output$tomato_treatments <- renderUI({
@@ -204,7 +205,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
                          "Tray:", data_tomato()[data_tomato()$id == j,3],
                          "Row:", data_tomato()[data_tomato()$id == j,1],
                          "Col:", data_tomato()[data_tomato()$id == j,2],
-                         "Weight:", data_tomato()[data_tomato()$id == j,4],"(g)")
+                         "Weight:", data_tomato()[data_tomato()$id == j,4],"(m)")
             radioButtons(inputId = paste("input", j, sep = "_"),label = lab,
                          choices = c("None" = "none","Treatment 1" = "t1","Treatment 2" = "t2",
                                      "Treatment 3" = "t3","Treatment 4" = "t4"), inline = TRUE)
@@ -229,7 +230,8 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         for(i in 1:length(bio)){
             hm[i] <- heat[d$row[i], d$col[i]]
             lm[i] <- light[d$row[i], d$col[i]]
-            bio[i] <- tomgro(initial = d$initial[i],manure = d$amount[i]/100, days = input$tom_days, heat = hm[i], light = lm[i])
+            bio[i] <- tomgro(initial = d$initial[i],
+                             manure = d$fertilizer[i]/100, days = input$tom_days, heat = hm[i], light = lm[i])
         }
         d$days <- input$tom_days
         d$heat_metric <- hm

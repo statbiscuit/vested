@@ -1,19 +1,19 @@
 ## CRAN packages
-pkgs <- c("shinyjs",              
-          "shinyWidgets",
-          "shinyRadioMatrix",
-          "ggplot2",
-          "ggsn",
-          "stringr",
-          "remotes")
-options(warn = -1)
-for (i in pkgs){
-    if (!require(i, quietly = TRUE, character.only = TRUE)){
-        install.packages(i)
-        require(i)
-    }
-}
-
+## Has to be done this awkward way because shinyapps throws a tantrum otherwise
+if(!require(shinyjs, quietly = TRUE)) {install.packages("shinyjs")} 
+require(shinyjs, quietly = TRUE)
+if(!require(shinyWidgets, quietly = TRUE)) {install.packages("shinyWidgets")} 
+require(shinyWidgets, quietly = TRUE)
+if(!require(shinyRadioMatrix, quietly = TRUE)) {install.packages("shinyRadioMatrix")} 
+require(shinyRadioMatrix, quietly = TRUE)
+if(!require(ggplot2, quietly = TRUE)) {install.packages("ggplot2")} 
+require(ggplot2, quietly = TRUE)
+if(!require(ggsn, quietly = TRUE)) {install.packages("ggsn")} 
+require(ggsn, quietly = TRUE)
+if(!require(stringr, quietly = TRUE)) {install.packages("stringr")} 
+require(stringr, quietly = TRUE)
+if(!require(remotes, quietly = TRUE)) {install.packages("remotes")} 
+require(remotes, quietly = TRUE)
 ## packages from GitHub
 if(!require(typed, quietly = TRUE)) {remotes::install_github("JohnCoene/typed")} 
 require(typed, quietly = TRUE)

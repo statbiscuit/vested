@@ -259,7 +259,9 @@ img.grow {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.dropgridcell{
+    border: 1px dotted #adadad;
+}
 #greenhouse h3 {
     margin-top: 0px;
     margin-bottom: 0px;

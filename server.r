@@ -49,7 +49,7 @@ function(input, output,session) {
         })
     })
     ## Tomato outputs
-    output$tomtxt <- renderText("Your family owns a tomato farm, has done for generations.
+    output$tomtxt <- renderText("Your family owns a tomato farm and has done for generations.
 Yields are down, money's tight, and the farm is at risk of bankruptcy. There is however rumour
 of some fertilizer recipe handed down from your great-great-grandmother that will maximise
 the yield of tomatoes. The exact recipe has however been lost to the hands of time.
@@ -65,7 +65,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
  You have four different recipes to test.")
     ## seedling weights for tray 1
     output$tray1 <- renderUI({
-        out_list <- lapply(paste("a",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("a",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray1"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -75,7 +75,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     })
      ## seedling weights for tray 2
     output$tray2 <- renderUI({
-        out_list <- lapply(paste("b",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("b",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray2"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -85,7 +85,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     })
     ## seedling weights for tray 3
     output$tray3 <- renderUI({
-        out_list <- lapply(paste("c",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("c",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray3"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -95,7 +95,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     })
      ## seedling weights for tray 4
     output$tray4 <- renderUI({
-        out_list <- lapply(paste("d",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("d",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray4"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -105,7 +105,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     })
      ## seedling weights for tray 5
     output$tray5 <- renderUI({
-        out_list <- lapply(paste("e",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("e",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray5"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -115,7 +115,7 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
     })
      ## seedling weights for tray 6
     output$tray6 <- renderUI({
-        out_list <- lapply(paste("f",1:12,sep = ""),function(t){
+        out_list <- lapply(paste("f",1:6,sep = ""),function(t){
             dragUI(t,h3(icon("seedling",class = "tray6"), 
                         renderText({
                             paste(round(runif(1,0,3),1), "m")
@@ -123,128 +123,68 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
         })
         do.call('tagList',out_list)
     })
-    ## seedling weights for tray 7
-    output$tray7 <- renderUI({
-        out_list <- lapply(paste("g",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray7"), 
-                        renderText({
-                            paste(round(runif(1,0,3),1), "m")
-                        }), h5("tray 7")))
-        })
-        do.call('tagList',out_list)
-    })
-     ## seedling weights for tray 8
-    output$tray8 <- renderUI({
-        out_list <- lapply(paste("h",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray8"), 
-                        renderText({
-                            round(runif(1,0,3),1)
-                        }), h5("tray 8")))
-        })
-        do.call('tagList',out_list)
-    })
-     ## seedling weights for tray 9
-    output$tray9 <- renderUI({
-        out_list <- lapply(paste("i",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray9"), 
-                        renderText({
-                            paste(round(runif(1,0,3),1), "m")
-                        }), h5("tray 9")))
-        })
-        do.call('tagList',out_list)
-    })
-     ## seedling weights for tray 10
-    output$tray10 <- renderUI({
-        out_list <- lapply(paste("j",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray10"), 
-                        renderText({
-                            round(runif(1,0,3),1)
-                        }), h5("tray 10")))
-        })
-        do.call('tagList',out_list)
-    })
-    ## seedling weights for tray 11
-    output$tray11 <- renderUI({
-        out_list <- lapply(paste("k",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray11"), 
-                        renderText({
-                            paste(round(runif(1,0,3),1), "m")
-                        }), h5("tray 11")))
-        })
-        do.call('tagList',out_list)
-    })
-     ## seedling weights for tray 12
-    output$tray12 <- renderUI({
-        out_list <- lapply(paste("l",1:12,sep = ""),function(t){
-            dragUI(t,h3(icon("seedling",class = "tray12"), 
-                        renderText({
-                            paste(round(runif(1,0,3),1), "m")
-                        }), h5("tray 12")))
-        })
-        do.call('tagList',out_list)
-    })
-    data_tomato <- reactive({
+    data_tomato <- reactiveValues(data = NULL)
+    observe({
         gh.v <- unlist(input$greenhouse)
-        trays <- as.numeric(gsub(".*tray (\\d+)\n.*", "\\1", gh.v))
-        initials <- as.numeric(sub("[\n ]*([\\d.]+)[\\s\\w\n][\n\\d\\s\\w]*", "\\1", gh.v, perl = TRUE))
-        data <- data.frame(row = rep(1:12, times = 12), col = rep(1:12, each = 12),
-                           tray = trays,
-                           initial = initials)
-        data[data == ""] <- NA
-        data <- na.omit(data)
-        if(nrow(data) > 0){
-            data$id <- 1:nrow(data)
-        }
-       
-        data
-    })
-    output$tomato_treatments <- renderUI({
-        validate(need(nrow(data_tomato()) > 0,"Please choose some seedlings"))
-        lapply(data_tomato()$id, function(j){
-            lab <- paste("ID #:", data_tomato()[data_tomato()$id == j,5],
-                         "Tray:", data_tomato()[data_tomato()$id == j,3],
-                         "Row:", data_tomato()[data_tomato()$id == j,1],
-                         "Col:", data_tomato()[data_tomato()$id == j,2],
-                         "Weight:", data_tomato()[data_tomato()$id == j,4],"(m)")
-            radioButtons(inputId = paste("input", j, sep = "_"),label = lab,
-                         choices = c("None" = "none","Treatment 1" = "t1","Treatment 2" = "t2",
-                                     "Treatment 3" = "t3","Treatment 4" = "t4"), inline = TRUE)
+        req(gh.v != "")
+        trays <- str_extract_all(gh.v, "tray .")
+        initials <- str_extract_all(gh.v, "... m")
+        col <- rep(rep(1:6, times = 6), times = sapply(initials, length))
+        row <- rep(rep(1:6, each = 6), times = sapply(initials, length))
+        t <- unlist(trays)
+        i <- unlist(initials)
+        d <- data.frame(id = 1:length(col), col = col, row = row,
+                        tray = as.integer(substring(t, 5)),
+                        initial = as.numeric(substring(i, 1, 3))
+                        )
+        output$tomato_treatments <- renderUI({
+            validate(need(nrow(d) > 0,"Please choose some seedlings"))
+            lapply(d$id, function(j){
+                lab <- paste(
+                    "Tray:", d[d$id == j, 4],
+                    "Row:", d[d$id == j, 3],
+                    "Col:", d[d$id == j, 2],
+                    "Weight:", d[d$id == j, 5],"(m)")
+                radioButtons(inputId = paste("input", j, sep = "_"),label = lab,
+                             choices = c("None" = "none","Treatment 1" = "t1","Treatment 2" = "t2",
+                                         "Treatment 3" = "t3","Treatment 4" = "t4"), inline = TRUE)
+                
+                
+            })
         })
-    })
-    data_tomato_update <- reactive({
-        req(nrow(data_tomato() > 0))
-        d <- data_tomato()
-        treatment <- unlist(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]]))
-        req(sum(is.null(treatment)) == 0)
-        d$treatment <- c(treatment)
-        d$fertilizer <- ifelse(d$treatment == "none",0,ifelse(d$treatment == "t1",input$treat_1_manure,
-                                                   ifelse(d$treatment == "t2",input$treat_2_manure,
-                                                   ifelse(d$treatment == "t3",input$treat_3_manure,
-                                                   ifelse(d$treatment == "t4",input$treat_4_manure,0)))))
-        ## simple heat ATM
-        heat <- matrix(rep(c(seq(22,10,by = -2),seq(14,22,by = 2)), each = 12), ncol = 12)
-        ## simple light ATM
-        light <- matrix(rep(seq(1,0.1,by = -0.08), each = 12), ncol = 12, byrow = TRUE)
-        ## crude biomass growth model atm
-        bio <- hm <- lm <- numeric(nrow(d)) 
-        for(i in 1:length(bio)){
-            hm[i] <- heat[d$row[i], d$col[i]]
-            lm[i] <- light[d$row[i], d$col[i]]
-            bio[i] <- tomgro(initial = d$initial[i],
-                             manure = d$fertilizer[i]/100, days = input$tom_days, heat = hm[i], light = lm[i])
-        }
-        d$days <- input$tom_days
-        d$heat_metric <- hm
-        d$light_metric <- lm
-        d$yield <- bio
-        d
+        data_tomato$data <- d
     })
     observe({
-        req(nrow(data_tomato()) > 0)
-        if(nrow(data_tomato_update()) > 0){
-            shinyjs::show("download_tomato")
+        d <- data_tomato$data
+        treatment <- c(unlist(sapply(paste("input",d$id,sep = "_"),function(p) input[[p]])))
+        req(length(treatment) == nrow(d))
+        data_tomato$data$treatment <- treatment
+        data_tomato$data$fertilizer <- ifelse(treatment == "none",0,
+                        ifelse(treatment == "t1",input$treat_1_manure,
+                        ifelse(treatment == "t2",input$treat_2_manure,
+                        ifelse(treatment == "t3",input$treat_3_manure,
+                        ifelse(treatment == "t4",input$treat_4_manure,0)))))
+        ## simple heat ATM
+        heat <- matrix(rep(c(seq(22, 10,by = -2),seq(14, 22,by = 2)), each = 6), ncol = 6)
+        ## simple light ATM
+        light <- matrix(rep(seq(1,0.1,by = -0.08), each = 6), ncol = 6, byrow = TRUE)
+        ## crude biomass growth model atm
+        bio <- hm <- lim <- numeric(nrow(d)) 
+        for(i in 1:nrow(d)){
+            hm[i] <- heat[d$row[i], d$col[i]]
+            lim[i] <- light[d$row[i], d$col[i]]
+            bio[i] <- tomgro(initial = d$initial[i],
+                             manure =  data_tomato$data$fertilizer[i]/100,
+                             days = input$tom_days, heat = hm[i], light = lim[i])
         }
-        
+        data_tomato$data$days <- input$tom_days
+        data_tomato$data$heat_metric <- hm
+        data_tomato$data$light_metric <- lim
+        data_tomato$data$yield <- bio
+    }) 
+    observe({
+        req(nrow(data_tomato$data) > 0)
+        shinyjs::show("download_tomato")
     })
     output$download_tomato <- downloadHandler(
         filename = function() {
@@ -261,65 +201,63 @@ has given you twelve trays of twelve seedlings you can use in your experiment (y
                                           img(class = "grow",src = "img/growing.gif")),footer = NULL))
             Sys.sleep(5)
             removeModal()
-            write.csv(data_tomato_update(), con, row.names = FALSE)
-            
+            write.csv(data_tomato$data, con, row.names = FALSE)
         }
     )
 
     ## Chick output
     observe({
-        req(any(!is.null(c(input$dieta1, input$dietb1, input$dietc1, input$dietd1, input$diete1, input$dietf1, input$dietg1, input$dieth1,
-                           input$dieta2, input$dietb2, input$dietc2, input$dietd2, input$diete2, input$dietf2, input$dietg2, input$dieth2,
-                           input$dieta3, input$dietb3, input$dietc3, input$dietd3, input$diete3, input$dietf3, input$dietg3, input$dieth3,
-                           input$dieta4, input$dietb4, input$dietc4, input$dietd4, input$diete4, input$dietf4, input$dietg4, input$dieth4))))
         ids <- paste0(rep(letters[1:8], 4), rep(1:4, each = 8))
-
-        # Update list of diets for updating the downloadable dataframe...
+        ## Update list of diets for updating the downloadable dataframe...
         if (!inherits(diets(), "character"))
             ldiets <- character(32)
         else
             ldiets <- diets()
 
-        # Update UI
+        ## Update UI
         lapply(1:32, function(i) {
             v <- input[[paste0('diet', ids[i])]]
             output[[ids[i]]] <- renderUI({
-                if (is.null(v))
-                    tagList(div(""))
-                else
+                if (is.null(v)){
+                    tagList(div(
+                        h4(class = "setup", "Please feed us"),
+                        img(class = "grow", src = "img/empty.png"),
+                        h4(""),
+                        h4("")
+                    ))
+                }else{
                     tagList(if (v == "Maize") {
-                        div(
-                            class = "boxed_emo",
-                            h4("Diet"),
-                            img(class = "grow", src = "img/corn.png"),
-                            h4("Copper units added"),
-                            h4(input[[ids[i]]])
-                        )
-                    } else{
-                        div(
-                            class = "boxed_emo",
-                            h4("Diet"),
-                            img(class = "grow", src = "img/wheat.png"),
-                            h4("Copper units added"),
-                            h4(input[[ids[i]]])
-                        )
-                    })
+                                div(
+                                    h4(class = "setup","Maize diet"),
+                                    img(class = "grow", src = "img/corn.png"),
+                                    h4(class = "setup", "Copper units added"),
+                                    h4(class = "setup", input[[ids[i]]])
+                                )
+                            }else{
+                                div(
+                                    h4(class = "setup", "Wheat diet"),
+                                    img(class = "grow", src = "img/wheat.png"),
+                                    h4(class = "setup", "Copper units added"),
+                                    h4(class = "setup", input[[ids[i]]])
+                                )
+                                
+                            })
+                }
             })
-
+            
             if (!is.null(v)) {
                 ldiets[i] <<- v
             }
         })
-
-        # Update for DF
+        ## Update for DF
         diets(ldiets)
     })
-
+    
     observeEvent(input$shuff1, {
         chickRandomise(session, 1)
     })
 
-    observeEvent(input$shuff2, {
+   observeEvent(input$shuff2, {
         chickRandomise(session, 2)
     })
 
@@ -404,20 +342,32 @@ chicks (e.g., brooder, tier position within the hen house etc.).")
     lapply(LETTERS[1:12], function(i) {
         output[[i]] <- renderUI({
             tagList(
-                if(i %in% input$heat) icon("solar-panel"),
-                if(i %in% input$light) icon("sun"),
-                validate(need(!is.null(input$variety[[i]]),"")),
-                if(input$variety[[i]] == "Kumi Kumi"){
-                    img(class = "grow",src = "img/kumi.png")
-                }else{
-                    if(input$variety[[i]] == "Buttercup"){
-                        img(class = "grow",src = "img/butter.png")
-                    }
-                })
+                fluidRow(
+                    column(4),
+                    column(4,
+                           column(6,if(i %in% input$heat) {
+                                        div( br(),icon("solar-panel", "fa-2x"))
+                                    }else{
+                                        div(br(), br())
+                                    }),
+                           column(6,if(i %in% input$light) div( br(), icon("sun", "fa-2x")))),
+                    column(4),
+                    validate(need(!is.null(input$variety[[i]]),"")),
+                    column(12, if(input$variety[[i]] == "Kumi Kumi"){
+                                   img(class = "grow",src = "img/kumi.png")
+                               }else{
+                                   if(input$variety[[i]] == "Buttercup"){
+                                       img(class = "grow",src = "img/butter.png")
+                                   }
+                               })
+                ))
         })
     })
-     observeEvent(input$shuffle_pumpkins, {
-        pumpRandomise(session)
+    observeEvent(input$shuff_heat, {
+        heatRandomise(session)
+    })
+    observeEvent(input$shuff_light, {
+        lightRandomise(session)
     })
     data <- reactive({
         h <- rep("Natural",12)

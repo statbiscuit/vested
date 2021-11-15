@@ -45,11 +45,21 @@ updateDiets <- function(old, new, input, output) {
   }
 }
 
-chickRandomise <- function(session, x) {
-  newVals <- sample(c("Maize", "Wheat"), 8, replace = TRUE)
-  for (i in 1:8) {
-    updateRadioButtons(session, paste0('diet', letters[i], x), selected = newVals[i])
-  }
+heatRandomise <- function(session) {
+    n <- sample(1:12, size = 1)
+    newVals <- sample(LETTERS[1:12], size = n)
+    updateCheckboxGroupInput(session, "heat", selected = newVals)
 }
-
+lightRandomise <- function(session) {
+    n <- sample(1:12, size = 1)
+    newVals <- sample(LETTERS[1:12], size = n)
+    updateCheckboxGroupInput(session, "light", selected = newVals)
+}
+chickRandomise <- function(session, x) {
+    newVals <- sample(c("Maize", "Wheat"), 8, replace = TRUE)
+    for (i in 1:8) {
+        updateRadioButtons(session, paste0('diet', letters[i], x),
+                           selected = newVals[i])
+    }
+}
 

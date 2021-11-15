@@ -3,16 +3,24 @@
 h1 {
     font-family: 'Audiowide', cursive;
     font-weight: 500;
-    line-height: 5.1;
-    color: white;
-    font-size: 40px;
+    line-height: 4.1;
+    color: #05386B; 
+    font-size: 50px;
     text-align: center;
 }
 h2 {
+    font-family: 'Helvetica', cursive;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #05386B;
+    font-size: 20px;
+    text-align: center;
+}
+h2.typed {
     font-family: 'Audiowide', cursive;
     font-weight: 500;
     line-height: 1.1;
-    color: white;
+    color: #05386B;
     font-size: 20px;
     text-align: center;
 }
@@ -28,12 +36,20 @@ h4 {
     font-family: 'Audiowide', cursive;
     font-weight: 500;
     line-height: 1;
-    color: black;
+    color:  #ECECEC;
+    font-size: 10px;
+    text-align: center;
+}
+h4.setup {
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1;
+    color:  #05386B;
     font-size: 10px;
     text-align: center;
 }
 h5 {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Helvetica', cursive;
     font-weight: 500;
     line-height: 0.8;
     color: black;
@@ -41,106 +57,120 @@ h5 {
     text-align: center;
 }
 h4.foot {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Helvetica', cursive;
     font-weight: 500;
     line-height: 1;
-    color: white;
+    color: #778899;
     font-size: 10px;
     text-align: center;
 }
-h2.pump_h2{
+h2.setup{
     font-family: 'Audiowide', cursive;
     font-weight: 500;
     line-height: 1.1;
-    color: black;
+    color: #05386B;
     font-size: 20px;
     text-align: center;
 }
+h2.pots{
+    font-family: 'Audiowide', cursive;
+    font-weight: 500;
+    line-height: 1.1;
+    color:   #ECECEC;
+    font-size: 25px;
+    text-align: center;
+}
 a {
-    color: white;
+    color: black;
 }
 /* layout of page */
 body {
-    background-color: black;
+    background-color: #ECECEC;
 }
 div.mid {
-    height: 10em;
+    height: auto;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
 }
-/* buttons for each game */
+/* buttons for each game on main page and data download */
 .tomato_btn{
-    color: black;
+    background-color: #F78888;
+    height: 60%;
+    width: 25%;
+    border: 10px dashed grey;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 20%;
     margin-right: -80%;
     transform: translate(-50%, -50%)
 }
+.download_tomato{
+    background-color:  #F78888;
+    border: 5px dashed grey;
+}
 .egg_btn{
-    color: black;
+    background-color: #F3D250;
+    height: 60%;
+    width: 25%;
+    border: 10px dashed grey;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
+.download_chick{
+    background-color:  #F3D250;
+    border: 5px dashed grey;
+}
 .pumpkin_btn{
-    color: black;
+    background-color: #90CCF4;
+    height: 60%;
+    width: 25%;
+    border: 10px dashed grey;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 80%;
     margin-right: -20%;
     transform: translate(-50%, -50%)
 }
-/* hover over buttons for stories */
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: white;
+.download_pumpkin{
+    background-color:  #90CCF4;
+    border: 2px dashed grey;
 }
+/* hover over buttons */
 .container {
-  position: relative;
-  width: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
 }
-.container:hover .overlay {
+.container:hover {
   opacity: 1;
 }
+/* #########################*/
 /* hidden pages */
 /* back buttons */
 .btn-primary {
-    background-color: white;
-    color: black;
+    background-color:  #05386B;
+    color: white;
+    opacity: 0.7;
+    border: 2px solid;
 }
 .btn-primary:hover {
   background-color: grey; 
-  color: white;
 }
-/* info settings pumpkin */
+/* #########################*/
+/* settings pumpkin */
 .btn-info {
-    background-color: black !important;
-    border: 2px solid white !important;
+    background-color: white !important;
+    border: 2px solid black !important;
     padding: 32px 32px;
 }
 .btn-info:hover {
     opacity: 0.6;
 }
 
-.info {
-    /* display: block; */
-    /* margin-left: 50%; */
-    /* margin-right: 50%; */
-    /* width: 50%;  */
-    background-color: white;
-}
 .shiny-radiomatrix{
     padding: 10px;
     width: 100%;
@@ -162,25 +192,33 @@ div.mid {
     font-family: 'Audiowide', cursive;
 }
 /* pumpkin plots */
+.pump-info {
+    background: #90CCF4;
+    border: 10px dashed grey;
+    height: 90%;
+}
 .pump_wrapper {
     display: grid;
     grid-template-columns: 20% 20%;
     grid-template-rows: auto;
     grid-gap: 15px;
     justify-content: space-evenly;
-    border: 10px solid white;
+    border: 10px solid black;
 }
 .bg-wrap {
-    background: url(img/tiles.png);
+    background:  #BEDABA;
     width: 100%;
+    overflow: hidden;
 }
 .box {
     background: url(img/soil.png);
     color: #fff;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 2px;
+    padding: 5px;
     height: 275px;
     width: 275px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 /* pumpkin grow gif */
 img.grow {
@@ -190,41 +228,30 @@ img.grow {
   width: 50%;
 }
 /* chick (henhouse) plots */
-.bgchick-wrap {
-    background-color: lightgrey;
-    overflow: auto;
-}
 .chick_wrapper {
     display: grid;
-    grid-template-columns: 19% 2% 19% 2% 19% 2% 19%;
-    grid-template-rows: 5% 90%;
+    grid-template-columns: 95%;
+    grid-template-rows: 50% 50%;
     grid-gap: 1px 50px;
     justify-content: space-evenly;
-    border: 10px solid black;
 }
 #innerchick-grid {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 8% 43% 43%;
   grid-template-rows: 25%;
   grid-gap: 3px;
 }
 #innerchick-grid > div {
-    background: url(img/straw.jpg);
-    border: 10px solid darkgrey;
+    background: #E4D96F;
+    border: 10px dashed grey;
     padding: 1%;
-    height: 200px;
-}
-#tiers {
-    display: grid;
-    grid-template-columns: 100;
-    grid-template-rows: 25%;
 }
 .boxed{
-    background-color: lightgrey;
+    background-color: #E4D96F;
     width: 20%;
 }
 .boxed_emo{
-    background-color: white;
+    background-color: #DCDCDC;
     width: 40%;
     border: 1px solid black;
     display: block;
@@ -233,31 +260,38 @@ img.grow {
     border-radius: 50px 20px;
 }
 .info-chick {
-    display: block;
-    margin-left: 50%;
-    margin-right: 50%;
-    width: 50%;
-}
-/* tomato (greenhouse) plots */
-.info-tom-1 {
-    background: white;
+    background: #da7959;
     display: block;
     width: 100%;
+    border: 10px dashed grey;
+}
+/* tomato (greenhouse) info blocks and setup plots */
+.info-tom-1 {
+    background:#F78888;
+    display: block;
+    width: 100%;
+    border: 10px dashed grey;
+}
+.recipies {
+    background:#F78888;
+    border: 10px dashed grey;
+    width: 90%;
+    position: relative;
 }
 .info-tom {
+    display: block;
+    width: 100%;
     display: flex;
 }
 .info-tom > div {
   flex: 1; 
 }
-.tomato-bck {
-    background: black;
-    width: 100%;
-}
 #greenhouse {
-    background: url(img/gradient.png);
+    /* background: url(img/gradient.png); */
+    background-image: linear-gradient(to right, #FDFD96 , #FFFFEA);
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
 }
 .dropgridcell{
     border: 1px dotted #adadad;
@@ -285,24 +319,6 @@ img.grow {
 }
 .tray6 {
     color: #66A61E
-}
-.tray7 {
-    color: #E6AB02
-}
-.tray8 {
-    color: #A6761D
-}
-.tray9 {
-    color: #666666
-}
-.tray10 {
-    color: #8DA0CB
-}
-.tray11 {
-    color: #FC8D62
-}
-.tray12 {
-    color: #66C2A5
 }
 
 /* style dragelements */

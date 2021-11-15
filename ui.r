@@ -404,7 +404,7 @@ fluidPage(
                                                      tags$b("Variety")),
                                                   radioMatrixInput(inputId = "variety", rowIDs = LETTERS[1:12],
                                                                    rowLLabels = LETTERS[1:12],
-                                                                   rowRLabels = rep(c("N.", "S."), each = 6),
+                                                                   rowRLabels = rep(c("N.", "S."), times = 6),
                                                                    choices = c("Kumi Kumi","Buttercup"),
                                                                    selected = NULL))),
                                    br(),

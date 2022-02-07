@@ -2,9 +2,9 @@
 
 ### `RShiny` application implementing **v**irtual **e**xperiment**s** for **t**eaching **e**xperimental **d**esign
 
-Link to [vested here](https://cmjt.shinyapps.io/vested/)
+Link to [vested here](https://statbiscuit.shinyapps.io/vested/)
 
-Students are typically introduced to experimental design via textbook examples; statistical analysis is carried out on already collected, wrangled, and cleaned data. A virtual setting is a cost- and hassle-free way to emulate a real-world experiment. The [vested](https://cmjt.shinyapps.io/vested/) `Rshiny` application implements three virtual experiments: [Country Pumpkin](#country-pumpkin), [Chook eggsperiment](#chook-eggsperiment), and [Head Tomato](#head-tomato)
+Students are typically introduced to experimental design via textbook examples; statistical analysis is carried out on already collected, wrangled, and cleaned data. A virtual setting is a cost- and hassle-free way to emulate a real-world experiment. The [vested](https://statbiscuit.shinyapps.io/vested/) `Rshiny` application implements three virtual experiments: [Country Pumpkin](#country-pumpkin), [Chook eggsperiment](#chook-eggsperiment), and [Head Tomato](#head-tomato)
 
 ![](/www/img/vested.png)
 

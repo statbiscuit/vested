@@ -180,7 +180,7 @@ function(input, output,session) {
             paste('tomato_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
-            showModal(modalDialog(tagList(typed::typed(sample(list(
+            showModal(modalDialog(tagList(typedjs::typed(sample(list(
                                                      h3("What type of tomato smells best? ...... A Roma"),
                                                      h3("Why did the tomato turn red? ... Because it saw the salad dressing"),
                                                      h3("Tomato paste is pretty viscous ... I guess it’s not very fast paste"),
@@ -259,7 +259,7 @@ function(input, output,session) {
     })
 
     output$chicktxt <- renderText("You have been employed by the University's Poultry Research Farm
-to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize. You need to determine the optimum amount of copper to add to their diets to improve their growth rate.")
+to look into how pullets respond to the amount of copper added to basic diets of either wheat or maize. You need to determine the optimum amount of copper (measured in arb. units) to add to their diets to improve their growth rate (again measured in arb. units).")
      output$chicktxt1 <- renderText("You are told that 150 units of copper added to either
 diet seems to improve growth. It is also known that there is a level of copper beyond which toxic effects will reduce the growth rate. So what is the optimum amount to add?")
     output$chicktxt2 <- renderText("At your disposal, you have  32 cages that each contain 16 chicks.
@@ -282,8 +282,8 @@ In addition to the amount of copper in their diet, other factors may influence t
                          input$a2 , input$b2 , input$c2 , input$d2 , input$e2 , input$f2 , input$g2 , input$h2,
                          input$a3 , input$b3 , input$c3 , input$d3 , input$e3 , input$f3 , input$g3 , input$h3,
                          input$a4 , input$b4 , input$c4 , input$d4 , input$e4 , input$f4 , input$g4 , input$h4)
-        data$copper <- rep(copper, each = 16)
-        data$growth <- round(sim_chick_growth(data),2)
+        data$'copper (arb. units)' <- rep(copper, each = 16)
+        data$'growth (arb.units)' <- round(sim_chick_growth(data),2)
         data <- apply(data,2,unlist)
         data
     })
@@ -292,7 +292,7 @@ In addition to the amount of copper in their diet, other factors may influence t
             paste('chick_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
-            showModal(modalDialog(tagList(typed::typed(sample(list(
+            showModal(modalDialog(tagList(typedjs::typed(sample(list(
                                                      h3("How do baby chickens dance? ...... Chick-to-chick"),
                                                      h3("What do chickens grow on? ...... Eggplants"),
                                                      h3("What do chickens call school tests? ... Eggs-aminations"),
@@ -362,7 +362,7 @@ In addition to the amount of copper in their diet, other factors may influence t
             paste('pumpkin_data-', Sys.Date(), '.csv', sep='')
         },
         content = function(con) {
-            showModal(modalDialog(tagList(typed::typed(sample(list(
+            showModal(modalDialog(tagList(typedjs::typed(sample(list(
                                                      h3("What do you get when you drop a pumpkin? ...... Squash"),
                                                      h3("What's a pumpkin's favorite genre? ...... Pulp fiction"),
                                                      h3("Why did the pumpkin take a detour? ... To avoid the seeday part of time"),

@@ -12,7 +12,7 @@ fluidPage(
             ## title
             h1("Choose your virtual experiment"),
             ## R package for typed.js
-            typed::typed(list(h2(class = "typed","randomisation"),
+            typedjs::typed(list(h2(class = "typed","randomisation"),
                               h2(class = "typed","blocking"),
                               h2(class = "typed","replication")), typeSpeed = 100, loop = TRUE)
         ),

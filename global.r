@@ -15,8 +15,8 @@ require(stringr, quietly = TRUE)
 if(!require(remotes, quietly = TRUE)) {install.packages("remotes")} 
 require(remotes, quietly = TRUE)
 ## packages from GitHub
-if(!require(typed, quietly = TRUE)) {remotes::install_github("JohnCoene/typed")} 
-require(typed, quietly = TRUE)
+if(!require(typedjs, quietly = TRUE)) {remotes::install_github("JohnCoene/typedjs")} 
+require(typedjs, quietly = TRUE)
 if(!require(shinyDNDvested, quietly = TRUE)) {remotes::install_github("statbiscuit/shinyDNDvested")} 
 require(shinyDNDvested, quietly = TRUE)
 options(warn = 0)
